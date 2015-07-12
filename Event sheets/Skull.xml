@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Skull</name>
+    <events>
+        <event-block sid="8574823566340308">
+            <conditions>
+                <condition behavior="LineOfSight2" id="0" name="Has LOS to object" sid="1546223206904883" type="Skullgun">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="3" name="Set angle of motion" sid="2654932448960255" type="Skullgun">
+                    <param id="0" name="Angle">angle(Skullgun.X, Skullgun.Y, Player.X, Player.Y)</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="5058142923045757" type="Skullgun">
+                    <param id="0" name="Speed">250</param>
+                </action>
+                <action behavior="Pathfinding" id="2" name="Stop" sid="5945299893269866" type="Skullgun" />
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="423602308466211">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="6273955889714698" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="6266622258144519" type="System">
+                    <param id="0" name="First value">NPCs.Count</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Second value">20</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="7723271749663266">
+                    <conditions>
+                        <condition id="-33" name="Pick by comparison" sid="4289064182459751" type="System">
+                            <param id="0" name="Object">Cityblock</param>
+                            <param id="1" name="Expression">Cityblock.AnimationFrame</param>
+                            <param id="2" name="Comparison">4</param>
+                            <param id="3" name="Value">8</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" sid="2679705750941092" type="System">
+                            <param id="0" name="Object">Cityblock</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="placeX" sid="484251783345115" static="0" type="number">480</variable>
+                        <variable constant="0" name="placeY" sid="5962232248634027" static="0" type="number">480</variable>
+                        <variable constant="0" name="randomNum" sid="3730355394559021" static="0" type="number">0</variable>
+                        <event-block disabled="1" sid="2696124147768204">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="5201182179632329" type="System">
+                                    <param id="0" name="Variable">randomNum</param>
+                                    <param id="1" name="Value">floor(random(0, 3))</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="2437925753941643">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="7661870319441686" type="System">
+                                    <param id="0" name="First value">randomNum</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="1129493936401408" type="System">
+                                    <param id="0" name="Variable">placeX</param>
+                                    <param id="1" name="Value">-480</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="2850214835701726">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="7854695071185417" type="System">
+                                    <param id="0" name="First value">randomNum</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="3242513843448543" type="System">
+                                    <param id="0" name="Variable">placeX</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="2867688752686786">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="6770231156948939" type="System">
+                                    <param id="0" name="First value">randomNum</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="1612929575106067" type="System">
+                                    <param id="0" name="Variable">placeX</param>
+                                    <param id="1" name="Value">480</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="6707987735536353">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="3805560927490688" type="System">
+                                    <param id="0" name="First value">placeX</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block disabled="1" sid="1637501698976923">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="4342495377401409" type="System">
+                                            <param id="0" name="First value">floor(random(0, 1))</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="6644441906039189" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">-480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="6248304646833658">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="2244544233058167" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7945142240460531" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="1554207244925977">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="7612625117635859" type="System">
+                                    <param id="0" name="First value">placeX</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="randonNum" sid="5948924285832211" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="3737883643140435">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="1760810429678827" type="System">
+                                            <param id="0" name="Variable">randonNum</param>
+                                            <param id="1" name="Value">floor(random(0, 3))</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="9879324287345674">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="9122152362718644" type="System">
+                                            <param id="0" name="First value">randonNum</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7687742609794413" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">-480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="1395732555103886">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="9610060982642048" type="System">
+                                            <param id="0" name="First value">randonNum</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="5297497866860538" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="5787292959708179">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="7685321386871936" type="System">
+                                            <param id="0" name="First value">randonNum</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="8102831154681836" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="5692681392978938">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="1323261480775388" type="System">
+                                    <param id="0" name="First value">distance(Player.X, Player.Y, Cityblock.X + placeX, Cityblock.Y + placeY)</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">400</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="5865821978312587" type="System">
+                                    <param id="0" name="Object to create">Skullgun</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Cityblock.X +placeX</param>
+                                    <param id="3" name="Y">Cityblock.Y + placeY</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="5559585816214713" type="System">
+                                    <param id="0" name="Object to create">Skullgun</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Cityblock.X +placeX - 80</param>
+                                    <param id="3" name="Y">Cityblock.Y + placeY</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="7691525634867696" type="System">
+                                    <param id="0" name="Object to create">Skullgun</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Cityblock.X +placeX + 80</param>
+                                    <param id="3" name="Y">Cityblock.Y + placeY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="7259872336668474">
+            <conditions>
+                <condition id="-11" name="For Each" sid="6179019934229126" type="System">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition behavior="Pathfinding" id="4" inverted="1" name="Is moving along path" sid="4779038553395089" type="Skullgun" />
+                <condition behavior="LineOfSight2" id="0" inverted="1" name="Has LOS to object" sid="3693145588843374" type="Skullgun">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="0" name="Set speed" sid="1226949718981358" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="7767161543980402" type="Skullgun" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="3883023423046289" type="Skullgun">
+                    <param id="0" name="X">Player.X</param>
+                    <param id="1" name="Y">Player.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="949151932186321">
+            <conditions>
+                <condition behavior="Pathfinding" id="0" name="On path found" sid="4952010226824562" type="Skullgun" />
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="1" name="Move along path" sid="1553455842555644" type="Skullgun" />
+            </actions>
+        </event-block>
+        <event-block sid="6218002239334915">
+            <conditions>
+                <condition behavior="Pathfinding" id="5" name="On arrived" sid="967271796540776" type="Skullgun" />
+                <condition id="-11" name="For Each" sid="518430674025437" type="System">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition behavior="LineOfSight2" id="0" inverted="1" name="Has LOS to object" sid="2998681955171395" type="Skullgun">
+                    <param id="0" name="Object">Player</param>
+                </condition>
+                <condition behavior="Pathfinding" id="4" inverted="1" name="Is moving along path" sid="9437744464624018" type="Skullgun" />
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="4" name="Regenerate obstacle map" sid="3053477873932555" type="Skullgun" />
+                <action behavior="Pathfinding" id="0" name="Find path" sid="4511659039311266" type="Skullgun">
+                    <param id="0" name="X">Player.X</param>
+                    <param id="1" name="Y">Player.Y</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

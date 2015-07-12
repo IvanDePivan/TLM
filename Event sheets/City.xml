@@ -1,0 +1,2279 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>City</name>
+    <events>
+        <event-group description="" sid="8041204297302828" title="StaticCity">
+            <sub-events>
+                <comment>Create city array</comment>
+                <event-block sid="8852303630810205">
+                    <conditions>
+                        <condition id="0" name="On function" sid="3195057179367052" type="f">
+                            <param id="0" name="Name">&quot;generateFixedCity&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="Yindex" sid="1464536064392623" static="0" type="number">0</variable>
+                        <event-block sid="8899894045686701">
+                            <conditions>
+                                <condition id="-10" name="For" sid="9433363754806856" type="System">
+                                    <param id="0" name="Name">&quot;vertical&quot;</param>
+                                    <param id="1" name="Start index">0</param>
+                                    <param id="2" name="End index">FixedCity.Height-1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="Xindex" sid="2910032507112702" static="0" type="number">0</variable>
+                                <event-block sid="1806497065609892">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="5217413600234594" type="System">
+                                            <param id="0" name="Name">&quot;horizontal&quot;</param>
+                                            <param id="1" name="Start index">0</param>
+                                            <param id="2" name="End index">FixedCity.Width-1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Top left corner</comment>
+                                        <event-block sid="9308003767810747">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="7461700081857534" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="6613276687298409" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="7094055541119639" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="988409756660977" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Top right corner</comment>
+                                        <event-block sid="2444244616750702">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="145588162158818" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">Citywidth-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="1433181705852909" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="5357870005666215" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="8759407925411198" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Bottom left corner</comment>
+                                        <event-block sid="2928360784446424">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="8822892687458769" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="8630264348156281" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">Cityheight-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="6058359433683845" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="4064719322598635" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">3</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Bottom right corner</comment>
+                                        <event-block sid="2731689717234446">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="8538544617591954" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">Citywidth-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="9875331493341454" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">Cityheight-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="9971901861210115" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="2491746086414151" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">4</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Top row</comment>
+                                        <event-block sid="6250234002077681">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="7779328202815178" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="6843136672883969" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">Citywidth-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="1004593612790988" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="9657615032091826" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="5531166916143093" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">5</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Bottom row</comment>
+                                        <event-block sid="2252120025161458">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="2417674756698743" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="4206533972838866" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">Citywidth-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="4091747297492868" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">Cityheight-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="9497389352042778" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="1607454234727599" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">8</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Left column</comment>
+                                        <event-block sid="3270870990877223">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="4071661688098712" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="4310603774125786" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="7749051856706272" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">Cityheight-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="8797852122766832" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="1632875308080161" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">7</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Right column</comment>
+                                        <event-block sid="8169681653366633">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="8037205488792108" type="System">
+                                                    <param id="0" name="First value">Xindex</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">Citywidth-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="4992896311906542" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="6735164105403408" type="System">
+                                                    <param id="0" name="First value">Yindex</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">Cityheight-1</param>
+                                                </condition>
+                                                <condition id="-8" name="Compare two values" sid="2563170482535912" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="5742121949084605" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">6</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>If not an edge, create at random</comment>
+                                        <event-block sid="5370983691875843">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="8534375991049878" type="System">
+                                                    <param id="0" name="First value">FixedCity.At(Xindex, Yindex, 1)</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="4" name="Set at XYZ" sid="3013549062126064" type="FixedCity">
+                                                    <param id="0" name="X">Xindex</param>
+                                                    <param id="1" name="Y">Yindex</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">floor(random(9,17))</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Finally, add 1 to the Xindex</comment>
+                                        <event-block sid="8529409597263414">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-10" name="Add to" sid="253778941809258" type="System">
+                                                    <param id="0" name="Variable">Xindex</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Move to the next Yindex</comment>
+                                <event-block sid="8115265321348461">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="537447244262895" type="System">
+                                            <param id="0" name="Variable">Yindex</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>at start, create the city and spawn the first block. TODO: start at center of city (post office)</comment>
+                <event-block sid="565086267200665">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="472666089448959" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set size" sid="3570368323139039" type="FixedCity">
+                            <param id="0" name="Width">Citywidth</param>
+                            <param id="1" name="Height">Cityheight</param>
+                            <param id="2" name="Depth">2</param>
+                        </action>
+                        <action id="0" name="Call function" sid="2091204184329533" type="f">
+                            <param id="0" name="Name">&quot;generateFixedCity&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-3" name="Create object" sid="5634040122617867" type="System">
+                            <param id="0" name="Object to create">Cityblock</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="X">ceil(Cityblock.Width)- 160 + (960 * floor(FixedCity.Width/2))</param>
+                            <param id="3" name="Y">ceil(Cityblock.Height) - 160 + (960 * floor(FixedCity.Height/2))</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="2825698064116542" type="Cityblock">
+                            <param id="0" name="Frame number">17</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="3717598856290773" type="FixedCity">
+                            <param id="0" name="X">floor(FixedCity.Width/2)</param>
+                            <param id="1" name="Y">floor(FixedCity.Height/2)</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="4782981805603915" type="Player">
+                            <param id="0" name="X">Cityblock.X</param>
+                            <param id="1" name="Y">Cityblock.Y + 400 </param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="8359946456317312" type="FixedCity">
+                            <param id="0" name="X">floor(FixedCity.Width/2)</param>
+                            <param id="1" name="Y">floor(FixedCity.Height/2)</param>
+                            <param id="2" name="Z">1</param>
+                            <param id="3" name="Value">17</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="4755252576850995">
+                            <conditions />
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Static City line of sight</comment>
+                <event-block sid="5775187148179358">
+                    <conditions />
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="lineOfSight" sid="2670868991478075" static="0" type="number">1000</variable>
+                        <comment>if a player moves to a certain direction, add/rmove tiles accordingly.</comment>
+                        <event-block sid="8214122101966237">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="5010967754863599" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">0</param>
+                                    <param id="2" name="Offset Y">-960</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="1206672960290675" type="System">
+                                    <param id="0" name="First value">Cityblock.Y + lineOfSight</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="641572333014131" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="6761382440961871" static="0" type="number">0</variable>
+                                <event-block sid="149545286226504">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="6836164464227034" type="FixedCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="199271048871496" type="FixedCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="2602772264618693" type="System" />
+                                        <action id="-9" name="Set value" sid="5075113798207528" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">FixedCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8781720169673728" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">FixedCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="5565962717423439">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="6332436123764024" type="System">
+                                                    <param id="0" name="First value">currentY</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="8432025368789323" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">1</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(1)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(1)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="2509722585528658" type="Cityblock">
+                                                    <param id="0" name="Frame number">FixedCity.At(currentX, currentY - 1, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="5372175029390022" type="FixedCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">currentY - 1</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="785157305964616">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="2231604252664347" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">0</param>
+                                    <param id="2" name="Offset Y">960</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="2307803884969414" type="System">
+                                    <param id="0" name="First value">Cityblock.Y - lineOfSight</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">Player.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="8694958073322308" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="9082657947748642" static="0" type="number">0</variable>
+                                <event-block sid="773414276090731">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="748547759838982" type="FixedCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="433927606175403" type="FixedCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="8620400903868886" type="System" />
+                                        <action id="-9" name="Set value" sid="7607909982723085" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">FixedCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="2096419650222079" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">FixedCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="7065286157132867">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="1941373502009012" type="System">
+                                                    <param id="0" name="First value">currentY</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">FixedCity.Height-1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="8175328582338788" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">1</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(2)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(2)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="2303071826396519" type="Cityblock">
+                                                    <param id="0" name="Frame number">FixedCity.At(currentX, currentY + 1, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="9463968627025424" type="FixedCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">currentY+1</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="6965091127026484">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="9225183385508607" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">-960</param>
+                                    <param id="2" name="Offset Y">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="101064686234086" type="System">
+                                    <param id="0" name="First value">(Cityblock.X + lineOfSight)</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="4606182990877058" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="6128059174221126" static="0" type="number">0</variable>
+                                <event-block sid="4778669466880308">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="4278318217493116" type="FixedCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="7938749277194226" type="FixedCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="8929277977908089" type="System" />
+                                        <action id="-9" name="Set value" sid="4801655434266345" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">FixedCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="4962017938456029" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">FixedCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="6827524447370546">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="4389256563532556" type="System">
+                                                    <param id="0" name="First value">currentX</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="2360649001130484" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">1</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(3)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(3)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="558482311548765" type="Cityblock">
+                                                    <param id="0" name="Frame number">FixedCity.At(currentX - 1, currentY, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="6300804088468067" type="FixedCity">
+                                                    <param id="0" name="X">currentX - 1</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="1972866952967947">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="6714580166210469" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">960</param>
+                                    <param id="2" name="Offset Y">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="5535359360564956" type="System">
+                                    <param id="0" name="First value">Cityblock.X - lineOfSight</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="7967552738208379" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="6506161984274814" static="0" type="number">0</variable>
+                                <event-block sid="5358578388164643">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="9868235315692046" type="FixedCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="2882932051416928" type="FixedCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="5777489763216805" type="System" />
+                                        <action id="-9" name="Set value" sid="6025868852571071" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">FixedCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8149010239632206" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">FixedCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="4773404904248898">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="9944160521653565" type="System">
+                                                    <param id="0" name="First value">currentX</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">FixedCity.Width-1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="7036896728251664" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">1</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(4)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(4)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="5251708310887818" type="Cityblock">
+                                                    <param id="0" name="Frame number">FixedCity.At(currentX + 1, currentY, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="5930204520049627" type="FixedCity">
+                                                    <param id="0" name="X">currentX + 1</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>Needs updating!</comment>
+        <event-group description="" disabled="1" sid="3647653683946006" title="DynamicCity">
+            <sub-events>
+                <comment>Dynamic city array: Z index 0 for UID and Z index 1 for Current Frame</comment>
+                <event-block disabled="1" sid="4068527024158183">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="5768151314197855" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="2877760183102504" type="Player">
+                            <param id="0" name="X">round(LayoutWidth/2)</param>
+                            <param id="1" name="Y">round(LayoutHeight/2)</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="8936835194795599" type="System">
+                            <param id="0" name="Object to create">Cityblock</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="X">round(LayoutWidth/2) + 480</param>
+                            <param id="3" name="Y">round(LayoutHeight/2) + 480</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="9971045188099263" type="Cityblock">
+                            <param id="0" name="Frame number">1</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="3972325527907604" type="DynamicCity">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Z">0</param>
+                            <param id="3" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="4" name="Set at XYZ" sid="6381711382972002" type="DynamicCity">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Y">0</param>
+                            <param id="2" name="Z">1</param>
+                            <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Dynamic City Generator</comment>
+                <event-block disabled="1" sid="3934572212101593">
+                    <conditions />
+                    <actions>
+                        <action id="0" name="Set text" sid="8838153268924562" type="Text">
+                            <param id="0" name="Text">&quot;C: &quot; &amp; Cityblock.Count &amp; &quot; W:&quot; &amp; DynamicCity.Width &amp; &quot; H:&quot; &amp; DynamicCity.Height &amp; &quot; CO:&quot; &amp; CollisionBox.Count</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>if a player moves to a certain direction, add/rmove tiles accordingly.</comment>
+                        <event-block disabled="1" sid="2498635264545537">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="6903611859881611" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">0</param>
+                                    <param id="2" name="Offset Y">-960</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="2381286083780427" type="System">
+                                    <param id="0" name="First value">Cityblock.Y + 1500</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="1591368516707357" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="6015253993124192" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="8734321796528148">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="6110166938335851" type="DynamicCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="7939574316475031" type="DynamicCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="1975870618722654" type="System" />
+                                        <action id="-9" name="Set value" sid="9672109950592595" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">DynamicCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8691075029603959" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">DynamicCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <comment>TO DO: set animation frame at random</comment>
+                                        <event-block disabled="1" sid="6901979983263289">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="8776339814549215" type="System">
+                                                    <param id="0" name="First value">currentY</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="2274014082447496" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(1)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(1)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="9662124896747748" type="Cityblock">
+                                                    <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                </action>
+                                                <action id="5" name="Push" sid="3287609158103752" type="DynamicCity">
+                                                    <param id="0" name="Where">1</param>
+                                                    <param id="1" name="Value">0</param>
+                                                    <param id="2" name="Axis">1</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="9021462704202481" type="DynamicCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">0</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="8696081904033537" type="DynamicCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">0</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="7542784339105027">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="1139955060237834" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="4961917859734946" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(1)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(1)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="6295507816181517" type="Cityblock">
+                                                    <param id="0" name="Frame number">DynamicCity.At(currentX, currentY - 1, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="8493541291222546" type="DynamicCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">currentY - 1</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block disabled="1" sid="6666366153743272">
+                                                    <conditions>
+                                                        <condition id="2" name="Compare at XYZ" sid="7705700087171787" type="DynamicCity">
+                                                            <param id="0" name="X">currentX</param>
+                                                            <param id="1" name="Y">currentY-1</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Comparison">0</param>
+                                                            <param id="4" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="5" name="Set frame" sid="7766088250169876" type="Cityblock">
+                                                            <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                        </action>
+                                                        <action id="4" name="Set at XYZ" sid="5959587920052272" type="DynamicCity">
+                                                            <param id="0" name="X">currentX</param>
+                                                            <param id="1" name="Y">currentY - 1</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="2114445207780087">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="7507422462038523" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">0</param>
+                                    <param id="2" name="Offset Y">960</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="5949332979905829" type="System">
+                                    <param id="0" name="First value">Cityblock.Y - 1500</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">Player.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="698711459275669" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="8932805860046246" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="9933334100332133">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="51201615076231" type="DynamicCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="4633587219489197" type="DynamicCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="6135015133199328" type="System" />
+                                        <action id="-9" name="Set value" sid="3825085015662108" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">DynamicCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="139813029029959" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">DynamicCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block disabled="1" sid="1460972744995659">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="6995671662254022" type="System">
+                                                    <param id="0" name="First value">currentY</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">DynamicCity.Height-1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="6214441250876479" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(2)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(2)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="5771470955595714" type="Cityblock">
+                                                    <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                </action>
+                                                <action id="5" name="Push" sid="1660636519183809" type="DynamicCity">
+                                                    <param id="0" name="Where">0</param>
+                                                    <param id="1" name="Value">0</param>
+                                                    <param id="2" name="Axis">1</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="7347636668729169" type="DynamicCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">DynamicCity.Height - 1</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="396695706810643" type="DynamicCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">DynamicCity.Height - 1</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="7404749721526707">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="576400765833378" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="2728670596230251" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(2)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(2)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="779208935826824" type="Cityblock">
+                                                    <param id="0" name="Frame number">DynamicCity.At(currentX, currentY + 1, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="6987289458278326" type="DynamicCity">
+                                                    <param id="0" name="X">currentX</param>
+                                                    <param id="1" name="Y">currentY+1</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block disabled="1" sid="7029237889754672">
+                                                    <conditions>
+                                                        <condition id="2" name="Compare at XYZ" sid="5430833999358562" type="DynamicCity">
+                                                            <param id="0" name="X">currentX</param>
+                                                            <param id="1" name="Y">currentY+1</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Comparison">0</param>
+                                                            <param id="4" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="5" name="Set frame" sid="2557454931949057" type="Cityblock">
+                                                            <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                        </action>
+                                                        <action id="4" name="Set at XYZ" sid="5714157665013148" type="DynamicCity">
+                                                            <param id="0" name="X">currentX</param>
+                                                            <param id="1" name="Y">currentY + 1</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="280455492487407">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="8441233502178553" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">-960</param>
+                                    <param id="2" name="Offset Y">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="9561458084575642" type="System">
+                                    <param id="0" name="First value">Cityblock.X + 1500</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="8242164232739734" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="5445296422344681" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="3887192886217463">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="6162312888934198" type="DynamicCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="1656371228043608" type="DynamicCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="6086514081083955" type="System" />
+                                        <action id="-9" name="Set value" sid="163173001618343" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">DynamicCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8169867990782962" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">DynamicCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block disabled="1" sid="9010878872104906">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="5001509587306982" type="System">
+                                                    <param id="0" name="First value">currentX</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="3319844033662736" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(3)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(3)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="4349831235518936" type="Cityblock">
+                                                    <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                </action>
+                                                <action id="5" name="Push" sid="7431387759223719" type="DynamicCity">
+                                                    <param id="0" name="Where">1</param>
+                                                    <param id="1" name="Value">0</param>
+                                                    <param id="2" name="Axis">0</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="4733696186722584" type="DynamicCity">
+                                                    <param id="0" name="X">0</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="1226207729199497" type="DynamicCity">
+                                                    <param id="0" name="X">0</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="5325230764010866">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="5707639510166316" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="945895879564653" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(3)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(3)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="9624465113558872" type="Cityblock">
+                                                    <param id="0" name="Frame number">DynamicCity.At(currentX - 1, currentY, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="4307145794379004" type="DynamicCity">
+                                                    <param id="0" name="X">currentX - 1</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block disabled="1" sid="8125909529588884">
+                                                    <conditions>
+                                                        <condition id="2" name="Compare at XYZ" sid="5057532395833167" type="DynamicCity">
+                                                            <param id="0" name="X">currentX-1</param>
+                                                            <param id="1" name="Y">currentY</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Comparison">0</param>
+                                                            <param id="4" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="5" name="Set frame" sid="4501491470305916" type="Cityblock">
+                                                            <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                        </action>
+                                                        <action id="4" name="Set at XYZ" sid="6303220598645744" type="DynamicCity">
+                                                            <param id="0" name="X">currentX - 1</param>
+                                                            <param id="1" name="Y">currentY</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="1644421949599473">
+                            <conditions>
+                                <condition id="9" inverted="1" name="Is overlapping at offset" sid="8157851697190023" type="Cityblock">
+                                    <param id="0" name="Object">Cityblock</param>
+                                    <param id="1" name="Offset X">960</param>
+                                    <param id="2" name="Offset Y">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="6166284219118593" type="System">
+                                    <param id="0" name="First value">Cityblock.X - 1500</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="currentX" sid="6323831110987362" static="0" type="number">0</variable>
+                                <variable constant="0" name="currentY" sid="8266054672033377" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="2979818894845186">
+                                    <conditions>
+                                        <condition id="3" name="For each element" sid="4266544968917223" type="DynamicCity">
+                                            <param id="0" name="Axes">1</param>
+                                        </condition>
+                                        <condition id="4" name="Compare current value" sid="2066782878914498" type="DynamicCity">
+                                            <param id="0" name="Comparison">0</param>
+                                            <param id="1" name="Value">Cityblock.UID</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-24" name="Stop loop" sid="8289335493939128" type="System" />
+                                        <action id="-9" name="Set value" sid="2731215878950497" type="System">
+                                            <param id="0" name="Variable">currentX</param>
+                                            <param id="1" name="Value">DynamicCity.CurX</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8025856452419889" type="System">
+                                            <param id="0" name="Variable">currentY</param>
+                                            <param id="1" name="Value">DynamicCity.CurY</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block disabled="1" sid="2392455521076167">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="4560111443385378" type="System">
+                                                    <param id="0" name="First value">currentX</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Second value">DynamicCity.Width - 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="9797636932104223" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(4)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(4)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="3747463933242715" type="Cityblock">
+                                                    <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                </action>
+                                                <action id="5" name="Push" sid="9547827356389843" type="DynamicCity">
+                                                    <param id="0" name="Where">0</param>
+                                                    <param id="1" name="Value">0</param>
+                                                    <param id="2" name="Axis">0</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="9164120547567792" type="DynamicCity">
+                                                    <param id="0" name="X">DynamicCity.Width-1</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="3709930521113941" type="DynamicCity">
+                                                    <param id="0" name="X">DynamicCity.Width - 1</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">1</param>
+                                                    <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block disabled="1" sid="9741253606753127">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="8489882274891402" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Create object" sid="6160794044609035" type="System">
+                                                    <param id="0" name="Object to create">Cityblock</param>
+                                                    <param id="1" name="Layer">&quot;City&quot;</param>
+                                                    <param id="2" name="X">Cityblock.ImagePointX(4)</param>
+                                                    <param id="3" name="Y">Cityblock.ImagePointY(4)</param>
+                                                </action>
+                                                <action id="5" name="Set frame" sid="8702468227061319" type="Cityblock">
+                                                    <param id="0" name="Frame number">DynamicCity.At(currentX + 1, currentY, 1)</param>
+                                                </action>
+                                                <action id="4" name="Set at XYZ" sid="7823865474686502" type="DynamicCity">
+                                                    <param id="0" name="X">currentX + 1</param>
+                                                    <param id="1" name="Y">currentY</param>
+                                                    <param id="2" name="Z">0</param>
+                                                    <param id="3" name="Value">Cityblock.UID</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block disabled="1" sid="3800971685113536">
+                                                    <conditions>
+                                                        <condition id="2" name="Compare at XYZ" sid="8671326226820999" type="DynamicCity">
+                                                            <param id="0" name="X">currentX+1</param>
+                                                            <param id="1" name="Y">currentY</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Comparison">0</param>
+                                                            <param id="4" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="5" name="Set frame" sid="3365019686930908" type="Cityblock">
+                                                            <param id="0" name="Frame number">floor(random(1, Cityblock.AnimationFrameCount))</param>
+                                                        </action>
+                                                        <action id="4" name="Set at XYZ" sid="6792628255902192" type="DynamicCity">
+                                                            <param id="0" name="X">currentX + 1</param>
+                                                            <param id="1" name="Y">currentY</param>
+                                                            <param id="2" name="Z">1</param>
+                                                            <param id="3" name="Value">Cityblock.AnimationFrame</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="7333105650723602">
+                    <conditions />
+                    <actions />
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>Delete any tiles no longer necessary</comment>
+        <event-block sid="1069716004886342">
+            <conditions>
+                <condition id="-11" name="For Each" sid="5962897997809118" type="System">
+                    <param id="0" name="Object">Cityblock</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="2705099831869917" type="System">
+                    <param id="0" name="First value">distance(Player.X, Player.Y, Cityblock.X, Cityblock.Y)</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">1000</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="7169297560614416">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="4335009860130085" type="System">
+                            <param id="0" name="Object">CollisionBox</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="1588964615767586" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Cityblock.UID</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="6900188881462603" type="CollisionBox" />
+                    </actions>
+                </event-block>
+                <event-block sid="3726865815141269">
+                    <conditions />
+                    <actions>
+                        <action id="-9" name="Destroy" sid="5184754269324036" type="Cityblock" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>destroy overlapping cityblocks</comment>
+        <event-block sid="4460985951707861">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="3485818530058369" type="Cityblock">
+                    <param id="0" name="Object">Cityblock</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="2100620660052202">
+                    <conditions>
+                        <condition id="-11" name="For Each" sid="2659610439002567" type="System">
+                            <param id="0" name="Object">CollisionBox</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="1104494127840735" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Cityblock.UID</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="3095184401250877" type="CollisionBox" />
+                    </actions>
+                </event-block>
+                <event-block sid="7374137463271707">
+                    <conditions />
+                    <actions>
+                        <action id="-9" name="Destroy" sid="7375523011123608" type="Cityblock" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>on certain frames, spawn collisionboxes</comment>
+        <event-block sid="1292245516689993">
+            <conditions>
+                <condition id="6" name="On frame changed" sid="8235225408213982" type="Cityblock" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="4461373510431727">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="5858234633192462" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">9</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="2528434517515521" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="5463200824880106" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2013223401755958" type="CollisionBox">
+                            <param id="0" name="Width">185</param>
+                            <param id="1" name="Height">638</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="9479558136762147" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="4857141090800218" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4506697596319402" type="CollisionBox">
+                            <param id="0" name="Width">127</param>
+                            <param id="1" name="Height">510</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="9080660287223416" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6374598700146316" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="380537072756079" type="CollisionBox">
+                            <param id="0" name="Width">30</param>
+                            <param id="1" name="Height">512</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="6340366475845486" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8952280473290299" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="7413429771590715" type="CollisionBox">
+                            <param id="0" name="Width">188</param>
+                            <param id="1" name="Height">568</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8892174678394168">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="204340093468101" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="345290450406115" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="1794456129356949" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="9747180428556282" type="CollisionBox">
+                            <param id="0" name="Width">254</param>
+                            <param id="1" name="Height">670</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7109693271856762" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7876526504988639" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6730991982799493" type="CollisionBox">
+                            <param id="0" name="Width">124</param>
+                            <param id="1" name="Height">284</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1159622688347742" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7300645214857477" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1769977017014934" type="CollisionBox">
+                            <param id="0" name="Width">190</param>
+                            <param id="1" name="Height">286</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3783563321698821">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="4330089344271873" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">11</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="1250076467853235" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="3767237058617393" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2854531878793615" type="CollisionBox">
+                            <param id="0" name="Width">190</param>
+                            <param id="1" name="Height">669</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7791265622548749" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="4690165896638281" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="9818558618971535" type="CollisionBox">
+                            <param id="0" name="Width">63</param>
+                            <param id="1" name="Height">446</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="512890890869131" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9118230848750629" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="154251201527564" type="CollisionBox">
+                            <param id="0" name="Width">63</param>
+                            <param id="1" name="Height">446</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="6596401675926689" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="775323651228136" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1479723553358235" type="CollisionBox">
+                            <param id="0" name="Width">190</param>
+                            <param id="1" name="Height">669</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4613033652810653">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="5237924169031917" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">12</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="2867956389068824" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9455292503688914" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1386402964532354" type="CollisionBox">
+                            <param id="0" name="Width">639</param>
+                            <param id="1" name="Height">286</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="5432506377504232" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="1544861595008514" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="7748438446903632" type="CollisionBox">
+                            <param id="0" name="Width">253</param>
+                            <param id="1" name="Height">285</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1297881801697637" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6579694969335714" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="5466514401056049" type="CollisionBox">
+                            <param id="0" name="Width">319</param>
+                            <param id="1" name="Height">222</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="5120470220217177" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="1868931531946524" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2380307750101946" type="CollisionBox">
+                            <param id="0" name="Width">192</param>
+                            <param id="1" name="Height">158</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4505858354402455">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="6557888908776618" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">13</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="9750699638706527" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6541776975481868" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4374236489463771" type="CollisionBox">
+                            <param id="0" name="Width">190</param>
+                            <param id="1" name="Height">287</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="3487299823543421" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="5009344944638058" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="9140498059008925" type="CollisionBox">
+                            <param id="0" name="Width">255</param>
+                            <param id="1" name="Height">287</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="2053672109600839" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6248857786836146" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6318878269281105" type="CollisionBox">
+                            <param id="0" name="Width">255</param>
+                            <param id="1" name="Height">287</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="2454761845281187" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8103578129053803" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4135194726654678" type="CollisionBox">
+                            <param id="0" name="Width">190</param>
+                            <param id="1" name="Height">287</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="8993070131829843">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="3156337090082548" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">14</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="2471511086709116" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">15</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="2032897397737732" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6904846324681709" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="499282340815928" type="CollisionBox">
+                            <param id="0" name="Width">638</param>
+                            <param id="1" name="Height">668</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3332281531865523">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="3233786837115594" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">16</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="3236173514338691" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7132554481860808" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6160991837872387" type="CollisionBox">
+                            <param id="0" name="Width">637</param>
+                            <param id="1" name="Height">637</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="602356196335539" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2538571970660922" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="7446058295911763" type="CollisionBox">
+                            <param id="0" name="Width">126</param>
+                            <param id="1" name="Height">32</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1485139081866114" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7839251700879378" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="8419554230693176" type="CollisionBox">
+                            <param id="0" name="Width">126</param>
+                            <param id="1" name="Height">32</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="9451934392778139" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7319029740907273" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="779996382827004" type="CollisionBox">
+                            <param id="0" name="Width">126</param>
+                            <param id="1" name="Height">32</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7253599274488843">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="3574565153505451" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">17</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="5712645033669245" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2312711326778296" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="3204064825625363" type="CollisionBox">
+                            <param id="0" name="Width">448</param>
+                            <param id="1" name="Height">573</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="2474997962661272" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2799929406629679" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1826580928485222" type="CollisionBox">
+                            <param id="0" name="Width">62</param>
+                            <param id="1" name="Height">33</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7376148784242174" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2418419401807341" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2791617098223361" type="CollisionBox">
+                            <param id="0" name="Width">128</param>
+                            <param id="1" name="Height">32</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>upper left corner</comment>
+                <event-block sid="3703595707008462">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="1927713315409997" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="8797431930191869" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9897584560844534" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="3259969590953735" type="CollisionBox">
+                            <param id="0" name="Width">159</param>
+                            <param id="1" name="Height">320</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="629847761375419" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8018113771059527" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4740110377323476" type="CollisionBox">
+                            <param id="0" name="Width">64</param>
+                            <param id="1" name="Height">209</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7030477373706354" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9711136190727819" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="8836119311695913" type="CollisionBox">
+                            <param id="0" name="Width">92</param>
+                            <param id="1" name="Height">160</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>upper right corner</comment>
+                <event-block sid="4710418940403313">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="2780618048117764" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="7457321142059213" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8575877443004618" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="9225247063016601" type="CollisionBox">
+                            <param id="0" name="Width">160</param>
+                            <param id="1" name="Height">160</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="3279149605470483" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9080684740803797" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1468889248964971" type="CollisionBox">
+                            <param id="0" name="Width">157</param>
+                            <param id="1" name="Height">319</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>bottom left corner</comment>
+                <event-block sid="6954730035444691">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="5436733965730983" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="7742518905152733" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="1965452885418777" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="9096684506896895" type="CollisionBox">
+                            <param id="0" name="Width">160</param>
+                            <param id="1" name="Height">320</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="9550056117329834" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2530922200557347" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4793783255420504" type="CollisionBox">
+                            <param id="0" name="Width">159</param>
+                            <param id="1" name="Height">176</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>bottom right corner</comment>
+                <event-block sid="6629768852316947">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="6393280458670708" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="5470408783077517" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="4886653169339921" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="3957031760160979" type="CollisionBox">
+                            <param id="0" name="Width">129</param>
+                            <param id="1" name="Height">175</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="8467797399248128" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="4809547030878088" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="7536121540646642" type="CollisionBox">
+                            <param id="0" name="Width">191</param>
+                            <param id="1" name="Height">111</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7572318866058816" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="5038175295765411" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4820836270586809" type="CollisionBox">
+                            <param id="0" name="Width">159</param>
+                            <param id="1" name="Height">63</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1906484012540029" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9645502164298892" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2839888262499173" type="CollisionBox">
+                            <param id="0" name="Width">96</param>
+                            <param id="1" name="Height">146</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>upper row</comment>
+                <event-block sid="7532029309733215">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="9446581225313688" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="409182320299556" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2423223503029471" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2899600120662205" type="CollisionBox">
+                            <param id="0" name="Width">958</param>
+                            <param id="1" name="Height">94</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="188946886429763" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="7222204301427113" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="226861609265234" type="CollisionBox">
+                            <param id="0" name="Width">256</param>
+                            <param id="1" name="Height">63</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1480573011983126" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="3679689485457002" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4073080090216783" type="CollisionBox">
+                            <param id="0" name="Width">122</param>
+                            <param id="1" name="Height">62</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>right column</comment>
+                <event-block sid="3631338073130311">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="7864045246101996" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">6</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="5837331599098502" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9826505936581161" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="8976584177849722" type="CollisionBox">
+                            <param id="0" name="Width">158</param>
+                            <param id="1" name="Height">958</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="2500987199308683" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="3176769105703537" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6199425233157889" type="CollisionBox">
+                            <param id="0" name="Width">64</param>
+                            <param id="1" name="Height">222</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="4082952058810069" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="1196259134803723" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2202142779906584" type="CollisionBox">
+                            <param id="0" name="Width">64</param>
+                            <param id="1" name="Height">317</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Left Column</comment>
+                <event-block sid="4101836582232886">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="8131066620087408" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">7</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="4513332754020661" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9826386078898018" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="3615855520933173" type="CollisionBox">
+                            <param id="0" name="Width">158</param>
+                            <param id="1" name="Height">958</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="8073740203527608" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6284510714809578" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="4938549488298559" type="CollisionBox">
+                            <param id="0" name="Width">35</param>
+                            <param id="1" name="Height">285</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Bottom column</comment>
+                <event-block sid="7960250596805943">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="1469115395650332" type="System">
+                            <param id="0" name="First value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">8</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="7729351979987652" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">5</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="2055685536479261" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="6436103577073808" type="CollisionBox">
+                            <param id="0" name="Width">958</param>
+                            <param id="1" name="Height">255</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="9558264440854245" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">6</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9124314315560677" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="1200071772131315" type="CollisionBox">
+                            <param id="0" name="Width">108</param>
+                            <param id="1" name="Height">105</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="5382861546478109" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">7</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="4451123746466179" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="2700080784929214" type="CollisionBox">
+                            <param id="0" name="Width">252</param>
+                            <param id="1" name="Height">40</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7450519010648968" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">8</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8301917635700787" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="3652082445905956" type="CollisionBox">
+                            <param id="0" name="Width">270</param>
+                            <param id="1" name="Height">75</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="3923821816425471" type="Cityblock">
+                            <param id="0" name="Object">CollisionBox</param>
+                            <param id="1" name="Layer">&quot;City&quot;</param>
+                            <param id="2" name="Image point">9</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="3222039332745473" type="CollisionBox">
+                            <param id="0" name="Instance variable">cityblockUID</param>
+                            <param id="1" name="Value">Cityblock.UID</param>
+                        </action>
+                        <action id="-7" name="Set size" sid="771845803585417" type="CollisionBox">
+                            <param id="0" name="Width">188</param>
+                            <param id="1" name="Height">64</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" sid="2280050658666344">
+                    <conditions>
+                        <condition id="-21" name="Is between values" sid="8451913074190601" type="System">
+                            <param id="0" name="Value">Cityblock.AnimationFrame</param>
+                            <param id="1" name="Lower bound">1</param>
+                            <param id="2" name="Upper bound">Cityblock.AnimationFrameCount-1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="1216521115670486">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="4383566416077947" type="System">
+                                    <param id="0" name="Object">CollisionBox</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="8586417536551332" type="CollisionBox">
+                                    <param id="0" name="Instance variable">cityblockUID</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Cityblock.UID</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="8473135497676918" type="CollisionBox" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>remove double collision boxes</comment>
+        <event-block sid="67350491599183">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="2346104682134203" type="CollisionBox">
+                    <param id="0" name="Object">CollisionBox</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" sid="3966048714511268" type="CollisionBox" />
+            </actions>
+        </event-block>
+        <comment>Tiling background</comment>
+        <event-block sid="6944176755826073">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="2192955288008368" type="System" />
+            </conditions>
+            <actions>
+                <action id="-7" name="Set size" sid="7295335235552979" type="Asphalt">
+                    <param id="0" name="Width">128*20</param>
+                    <param id="1" name="Height">128*20</param>
+                </action>
+                <action id="-16" name="Wait" sid="5797090999030764" type="System">
+                    <param id="0" name="Seconds">0.05</param>
+                </action>
+                <action id="-3" name="Set position" sid="8328671320514316" type="Asphalt">
+                    <param id="0" name="X">ViewportLeft(0) - (Asphalt.Width/2)</param>
+                    <param id="1" name="Y">ViewportTop(0) - (Asphalt.Height/2)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="2068713275812917">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="2682329674902356" type="System">
+                    <param id="0" name="First value">Asphalt.BBoxLeft + (Asphalt.Width/5)</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">ViewportLeft(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="5017062142099164" type="Asphalt">
+                    <param id="0" name="X">Asphalt.X - (Asphalt.Width/2)</param>
+                    <param id="1" name="Y">Asphalt.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1285796232087716">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="4679379443453678" type="System">
+                    <param id="0" name="First value">Asphalt.BBoxRight - (Asphalt.Width/5)</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">ViewportRight(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="5890044291944024" type="Asphalt">
+                    <param id="0" name="X">Asphalt.X + (Asphalt.Width/2)</param>
+                    <param id="1" name="Y">Asphalt.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3185827839183374">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="5879791970679521" type="System">
+                    <param id="0" name="First value">Asphalt.BBoxTop + (Asphalt.Height/5)</param>
+                    <param id="1" name="Comparison">5</param>
+                    <param id="2" name="Second value">ViewportTop(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="1067119205472479" type="Asphalt">
+                    <param id="0" name="X">Asphalt.X</param>
+                    <param id="1" name="Y">Asphalt.Y - (Asphalt.Height/2)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="5269172955478073">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="4410043557539355" type="System">
+                    <param id="0" name="First value">Asphalt.BBoxBottom - (Asphalt.Height/5)</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Second value">ViewportBottom(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="6347418131688443" type="Asphalt">
+                    <param id="0" name="X">Asphalt.X</param>
+                    <param id="1" name="Y">Asphalt.Y + (Asphalt.Height/2)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9268794922665551">
+            <conditions>
+                <condition id="-18" name="On created" sid="6030628840426455" type="CollisionBox" />
+            </conditions>
+            <actions>
+                <action behavior="LineOfSight2" id="2" name="Add obstacle" sid="6019731927541801" type="Skullgun">
+                    <param id="0" name="Obstacle">CollisionBox</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

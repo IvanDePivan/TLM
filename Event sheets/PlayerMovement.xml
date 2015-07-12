@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>PlayerMovement</name>
+    <events>
+        <comment bookmark="1">TODO: 2d directional vector movement that abides by solids and such</comment>
+        <event-block sid="9728221761220828">
+            <conditions>
+                <condition id="0" name="On function" sid="1689373934147468" type="f">
+                    <param id="0" name="Name">&quot;player.move&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Moves the player using a directional vector&#x0D;&#x0A;@param0: XVector&#x0D;&#x0A;@param1: YVector</comment>
+                <variable constant="0" name="xVector" sid="7277619434981507" static="0" type="number">0</variable>
+                <variable constant="0" name="yVector" sid="7109651447067467" static="0" type="number">0</variable>
+                <event-block sid="4406345828028823">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="2202454314739603" type="System">
+                            <param id="0" name="First value">f.ParamCount</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" disabled="1" id="2" name="Set speed" sid="594872503610204" type="Player">
+                            <param id="0" name="Which">1</param>
+                            <param id="1" name="Speed">f.Param(0)</param>
+                        </action>
+                        <action behavior="CustomMovement" disabled="1" id="2" name="Set speed" sid="9244916120399808" type="Player">
+                            <param id="0" name="Which">2</param>
+                            <param id="1" name="Speed">f.param(1)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="6927199280808225" type="System">
+                            <param id="0" name="Variable">xVector</param>
+                            <param id="1" name="Value">f.Param(0)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>TODO: acceleration, deceleration, collision</comment>
+                        <comment>Calculate the speed of the player</comment>
+                        <event-block sid="1630250218132364">
+                            <conditions />
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="2044939183207458">
+            <conditions>
+                <condition id="0" name="On function" sid="2837322492977791" type="f">
+                    <param id="0" name="Name">&quot;player.accelerate&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <comment>Increases or decreases speed of the player according to the acceleration rate. returns max speed if it would go over the max speed&#x0D;&#x0A;@param0</comment>
+                <variable comment="The increase in speed in pixels per second" constant="0" name="acceleration" sid="2419782073482035" static="0" type="number">100</variable>
+                <variable comment="The maximum overal speed in pixels per second" constant="0" name="maxSpeed" sid="4304439311050766" static="0" type="number">0</variable>
+                <event-block sid="2049483023340071">
+                    <conditions />
+                    <actions />
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

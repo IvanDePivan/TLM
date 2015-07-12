@@ -1,0 +1,997 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Enemy</name>
+    <events>
+        <event-block disabled="1" sid="200">
+            <conditions>
+                <condition id="1" name="Is overlapping another object" sid="201" type="Player">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="4551428848109953" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="9621843211409876" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="2672488484708813" type="Player">
+                    <param id="0" name="Instance variable">Growth</param>
+                </condition>
+                <condition id="-6" name="Every X seconds" sid="1692587863805642" type="System">
+                    <param id="0" name="Interval (seconds)">0.1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Subtract from" sid="204" type="Player">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">5</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>If a bullet hits an enemy, subtract 10 from its health.  When an enemy runs out of health, destroy it.</comment>
+        <event-block disabled="1" sid="167">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="168" type="Bullets">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition id="-7" inverted="1" name="Compare instance variable" sid="3666964163125586" type="Skullgun">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="7318727575808631" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="169" type="Bullets">
+                    <param id="0" name="Object">Particles</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action id="-12" name="Subtract from" sid="170" type="Skullgun">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block disabled="1" sid="626516771302863">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="32809664114953" type="Player">
+                            <param id="0" name="Instance variable">Bounce</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="171" type="Bullets" />
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="330281724747962">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="3888530104186698" type="Player">
+                            <param id="0" name="Instance variable">Bounce</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="4" name="Bounce off object" sid="9488625529586552" type="Bullets">
+                            <param id="0" name="Object">Skullgun</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="8861159565649821">
+                    <conditions>
+                        <condition id="-7" inverted="1" name="Compare instance variable" sid="9277791285741898" type="Skullgun">
+                            <param id="0" name="Instance variable">Health</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="3071546632780872" type="f">
+                            <param id="0" name="Name">&quot;damageCounter&quot;</param>
+                            <param id="1" name="Parameter {n}">Skullgun.X{###}Skullgun.Y{###}&quot;10&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="8801762225543143">
+                    <conditions>
+                        <condition id="2" inverted="1" name="Is playing" sid="9765404113917911" type="Skullgun">
+                            <param id="0" name="Animation">&quot;hit&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="5048364195293813" type="Skullgun">
+                            <param id="0" name="Animation">&quot;hit&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="6418397614001845" type="Skullgun">
+                            <param id="0" name="Angle">Bullet.Angle</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="172">
+            <conditions>
+                <condition id="-11" name="For Each" sid="1840684951134813" type="System">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition id="-7" name="Compare instance variable" sid="173" type="Skullgun">
+                    <param id="0" name="Instance variable">Health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="14" name="Set speed" sid="1884365270682309" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+                <action behavior="8Direction" id="3" name="Set speed" sid="7412677623976687" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="4640104353700096" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block disabled="1" sid="9742031101218885">
+                    <conditions>
+                        <condition id="2" inverted="1" name="Is playing" sid="7251467905844902" type="Skullgun">
+                            <param id="0" name="Animation">&quot;death&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="4959755895219209" type="f">
+                            <param id="0" name="Name">&quot;skullDeath&quot;</param>
+                            <param id="1" name="Parameter {n}">Skullgun.UID</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="619137567761836">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="4522349601081461" type="Skullgun">
+                            <param id="0" name="Instance variable">Dead</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="9414840518474732" type="Skullgun">
+                            <param id="0" name="Instance variable">Dead</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="8709839354405496">
+            <conditions>
+                <condition id="4" name="On finished" sid="1186651236991011" type="Skullgun">
+                    <param id="0" name="Animation">&quot;death&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Fade" id="1" name="Start fade" sid="9944989913705209" type="Skullgun" />
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="471022924731728">
+            <conditions>
+                <condition id="4" name="On finished" sid="8897539623786896" type="Skullgun">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="1518889891519426" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="7623226871553019" type="Skullgun">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="3005930271999869">
+            <conditions>
+                <condition id="0" name="On function" sid="1464445102065469" type="f">
+                    <param id="0" name="Name">&quot;skullDeath&quot;</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="3335250762424293" type="Skullgun">
+                    <param id="0" name="Unique ID">f.Param(0)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="14" name="Set speed" sid="9819902608412102" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+                <action behavior="8Direction" id="3" name="Set speed" sid="6329792730682301" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+                <action behavior="Bullet" id="0" name="Set speed" sid="7034833109260968" type="Skullgun">
+                    <param id="0" name="Speed">0</param>
+                </action>
+                <action id="4" name="Set animation" sid="9719093307249382" type="Skullgun">
+                    <param id="0" name="Animation">&quot;death&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="11" name="Set collisions enabled" sid="8814481406770336" type="Skullgun">
+                    <param id="0" name="Collisions">0</param>
+                </action>
+                <action id="0" name="Call function" sid="8380236461286667" type="f">
+                    <param id="0" name="Name">&quot;damageCounter&quot;</param>
+                    <param id="1" name="Parameter {n}">Skullgun.X{###}Skullgun.Y{###}&quot;*DEAD*&quot;</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block disabled="1" sid="4263420530329008">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="8527165003971206" type="Player">
+                            <param id="0" name="Instance variable">explode</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="5148392736993904" type="f">
+                            <param id="0" name="Name">&quot;skullRing&quot;</param>
+                            <param id="1" name="Parameter {n}">Skullgun.X{###}Skullgun.Y{###}40{###}1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="2844426141130268">
+                    <conditions>
+                        <condition disabled="1" id="-12" name="Repeat" sid="7233694372613691" type="System">
+                            <param id="0" name="Count">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="6868557675642589" type="Skullgun">
+                            <param id="0" name="Object">Particles</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="2" name="Set spray cone" sid="6003595943014265" type="Particles">
+                            <param id="0" name="Spray cone">360</param>
+                        </action>
+                        <action behavior="8Direction" id="3" name="Set speed" sid="286385345754079" type="Skullgun">
+                            <param id="0" name="Speed">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="8648604508760269">
+            <conditions>
+                <condition id="9" name="Is overlapping at offset" sid="9768560971152392" type="Skullgun">
+                    <param id="0" name="Object">CollisionBox</param>
+                    <param id="1" name="Offset X">-10</param>
+                    <param id="2" name="Offset Y">-10</param>
+                </condition>
+                <condition id="9" name="Is overlapping at offset" sid="6526685116166175" type="Skullgun">
+                    <param id="0" name="Object">CollisionBox</param>
+                    <param id="1" name="Offset X">10</param>
+                    <param id="2" name="Offset Y">10</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action disabled="1" id="-9" name="Destroy" sid="5037833987151205" type="Skullgun" />
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="1954511371977573">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="9608882349469395" type="System">
+                    <param id="0" name="Interval (seconds)">2</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="9556109388665034" type="System">
+                    <param id="0" name="First value">NPCs.Count</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Second value">20</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="2084484939356282">
+                    <conditions>
+                        <condition id="-33" name="Pick by comparison" sid="9623361922812976" type="System">
+                            <param id="0" name="Object">Cityblock</param>
+                            <param id="1" name="Expression">Cityblock.AnimationFrame</param>
+                            <param id="2" name="Comparison">4</param>
+                            <param id="3" name="Value">8</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" sid="7035138440422597" type="System">
+                            <param id="0" name="Object">Cityblock</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="placeX" sid="3301478086627173" static="0" type="number">480</variable>
+                        <variable constant="0" name="placeY" sid="9151934682510574" static="0" type="number">480</variable>
+                        <variable constant="0" name="randomNum" sid="1688129897848578" static="0" type="number">0</variable>
+                        <event-block disabled="1" sid="7620804548137728">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="2831473846417524" type="System">
+                                    <param id="0" name="Variable">randomNum</param>
+                                    <param id="1" name="Value">floor(random(0, 3))</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="1182148614639996">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="4210527083813996" type="System">
+                                    <param id="0" name="First value">randomNum</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5764065490561923" type="System">
+                                    <param id="0" name="Variable">placeX</param>
+                                    <param id="1" name="Value">-480</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="6996607098120344">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="9550218002738183" type="System">
+                                    <param id="0" name="First value">randomNum</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="966512040660699" type="System">
+                                    <param id="0" name="Variable">placeX</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="125686315998946">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="7403955973037767" type="System">
+                                    <param id="0" name="First value">randomNum</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="7211391725957485" type="System">
+                                    <param id="0" name="Variable">placeX</param>
+                                    <param id="1" name="Value">480</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="9214502115401933">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="8951274167119884" type="System">
+                                    <param id="0" name="First value">placeX</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block disabled="1" sid="552649610340432">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="3901028234560676" type="System">
+                                            <param id="0" name="First value">floor(random(0, 1))</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="9917346722464268" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">-480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="9538704685548528">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="5302493529850813" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7205050833033342" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="7932158614064472">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="837701932657248" type="System">
+                                    <param id="0" name="First value">placeX</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="randonNum" sid="5916294210279701" static="0" type="number">0</variable>
+                                <event-block disabled="1" sid="9570460486962764">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="9399168039161125" type="System">
+                                            <param id="0" name="Variable">randonNum</param>
+                                            <param id="1" name="Value">floor(random(0, 3))</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="1440732680908666">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="3827665070450875" type="System">
+                                            <param id="0" name="First value">randonNum</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="6061493950923946" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">-480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="7907079079528399">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="9554079821548686" type="System">
+                                            <param id="0" name="First value">randonNum</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7383340726642972" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block disabled="1" sid="2506716963704198">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="318296764126918" type="System">
+                                            <param id="0" name="First value">randonNum</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">2</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="4920241116588328" type="System">
+                                            <param id="0" name="Variable">placeY</param>
+                                            <param id="1" name="Value">480</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block disabled="1" sid="8757889939843816">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="237224427110941" type="System">
+                                    <param id="0" name="First value">distance(Player.X, Player.Y, Cityblock.X + placeX, Cityblock.Y + placeY)</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">400</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Create object" sid="5135543348538034" type="System">
+                                    <param id="0" name="Object to create">Skullgun</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Cityblock.X +placeX</param>
+                                    <param id="3" name="Y">Cityblock.Y + placeY</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="3402917312385066" type="System">
+                                    <param id="0" name="Object to create">Skullgun</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Cityblock.X +placeX - 80</param>
+                                    <param id="3" name="Y">Cityblock.Y + placeY</param>
+                                </action>
+                                <action id="-3" name="Create object" sid="9540526609181698" type="System">
+                                    <param id="0" name="Object to create">Skullgun</param>
+                                    <param id="1" name="Layer">2</param>
+                                    <param id="2" name="X">Cityblock.X +placeX + 80</param>
+                                    <param id="3" name="Y">Cityblock.Y + placeY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="9409228050363559">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="580899422696193" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="3421233762866922">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="2203438506888263" type="Player">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block disabled="1" sid="4635062007941848">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="2334986145343313" type="System">
+                                    <param id="0" name="First value">Skullgun.X</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="3498557958751195" type="Skullgun">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="8629573716221173">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="5511334598270427" type="System">
+                                    <param id="0" name="First value">Skullgun.X</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="9266978377228308" type="Skullgun">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block disabled="1" sid="4685254396831466">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="9478514075137636" type="Player">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block disabled="1" sid="3876178583367232">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="7921285587120804" type="System">
+                                    <param id="0" name="First value">Skullgun.X</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="2921508150426742" type="Skullgun">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="9810557216569151">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="9917682149139084" type="System">
+                                    <param id="0" name="First value">Skullgun.X</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="7" name="Set mirrored" sid="5701991070206231" type="Skullgun">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="2839324156762276">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="2348289730753666" type="Skullgun" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="2572452860682626">
+                    <conditions>
+                        <condition id="-14" name="Pick by unique ID" sid="4107207920946735" type="shadowSkull">
+                            <param id="0" name="Unique ID">Skullgun.shadowUID</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="9084168301977505" type="shadowSkull" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block any="1" disabled="1" sid="6341616285233402">
+            <conditions>
+                <condition behavior="8Direction" id="1" name="Compare speed" sid="7789031347248404" type="Skullgun">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition behavior="Bullet" id="0" name="Compare speed" sid="9997370057308704" type="Skullgun">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition behavior="Pathfinding" id="6" name="Compare speed" sid="1492295626361066" type="Skullgun">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="5514882337145083">
+                    <conditions>
+                        <condition id="2" inverted="1" name="Is playing" sid="1281529582062318" type="Skullgun">
+                            <param id="0" name="Animation">&quot;hit&quot;</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="2638047666702235" type="Skullgun">
+                            <param id="0" name="Instance variable">Dead</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="50931016531774" type="Skullgun">
+                            <param id="0" name="Animation">&quot;run&quot;</param>
+                            <param id="1" name="From">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="8832410799135773">
+            <conditions>
+                <condition behavior="8Direction" id="1" inverted="1" name="Compare speed" sid="3707126213738869" type="Skullgun">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition behavior="Bullet" id="0" inverted="1" name="Compare speed" sid="7523100808085446" type="Skullgun">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition behavior="Pathfinding" id="6" inverted="1" name="Compare speed" sid="7828804605851318" type="Skullgun">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="8712306460426735" type="Skullgun">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="1894704768720405" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="1107952790051498" type="Skullgun">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="5278747783960672">
+            <conditions>
+                <condition id="0" name="On function" sid="630618059263339" type="f">
+                    <param id="0" name="Name">&quot;skullRing&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="x" sid="6759294403643639" static="0" type="number">0</variable>
+                <variable constant="0" name="y" sid="6731557960597914" static="0" type="number">0</variable>
+                <variable constant="0" name="degrees" sid="5478440210280337" static="0" type="number">0</variable>
+                <variable constant="0" name="shakeMagnitude" sid="360215288416083" static="0" type="number">0</variable>
+                <variable constant="0" name="shakeDuration" sid="5558683381838095" static="0" type="number">0</variable>
+                <event-block disabled="1" sid="497532672599024">
+                    <conditions />
+                    <actions>
+                        <action id="-9" name="Set value" sid="3482537490076446" type="System">
+                            <param id="0" name="Variable">x</param>
+                            <param id="1" name="Value">f.Param(0)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="4870514578143333" type="System">
+                            <param id="0" name="Variable">y</param>
+                            <param id="1" name="Value">f.Param(1)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="1392963542656473" type="System">
+                            <param id="0" name="Variable">shakeMagnitude</param>
+                            <param id="1" name="Value">f.Param(2)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="3926493134374074" type="System">
+                            <param id="0" name="Variable">shakeDuration</param>
+                            <param id="1" name="Value">f.Param(3)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block any="1" disabled="1" sid="3308734595417824">
+                    <conditions>
+                        <condition id="-12" name="Repeat" sid="5282686758558976" type="System">
+                            <param id="0" name="Count">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="6012723601293501" type="System">
+                            <param id="0" name="Object to create">Bullet</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="X">x</param>
+                            <param id="3" name="Y">y</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="19538000746348" type="Bullet">
+                            <param id="0" name="Angle">degrees</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="6143974624338215" type="System">
+                            <param id="0" name="Variable">degrees</param>
+                            <param id="1" name="Value">36</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="6406483298232672" type="System">
+                            <param id="0" name="Object to create">Particles</param>
+                            <param id="1" name="Layer">3</param>
+                            <param id="2" name="X">x</param>
+                            <param id="3" name="Y">y</param>
+                        </action>
+                        <action id="2" name="Set spray cone" sid="2802882440432511" type="Particles">
+                            <param id="0" name="Spray cone">360</param>
+                        </action>
+                        <action id="1" name="Set rate" sid="2151214788158432" type="Particles">
+                            <param id="0" name="Rate">50</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="8744445752727773">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="7194269677183939" type="System">
+                            <param id="0" name="First value">shakeMagnitude</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="7654909977443457" type="System">
+                            <param id="0" name="First value">shakeDuration</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="6690034716170631">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="8508294829848955" type="Skullgun">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="251768006415057" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block disabled="1" sid="6458122807912456">
+            <conditions>
+                <condition id="9" name="Is overlapping at offset" sid="199328260888161" type="Skullgun">
+                    <param id="0" name="Object">CollisionBox</param>
+                    <param id="1" name="Offset X">0</param>
+                    <param id="2" name="Offset Y">10</param>
+                </condition>
+                <condition id="-14" name="Pick by unique ID" sid="1129696820980298" type="shadowSkull">
+                    <param id="0" name="Unique ID">Skullgun.shadowUID</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Move to layer" sid="5775918478806587" type="shadowSkull">
+                    <param id="0" name="Layer">0</param>
+                </action>
+                <action id="-24" name="Move to top" sid="5724481344571338" type="shadowSkull" />
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="9261638470209389">
+            <conditions>
+                <condition id="-22" name="Else" sid="5802285783394694" type="System" />
+            </conditions>
+            <actions>
+                <action id="-26" name="Move to layer" sid="1753355554317125" type="shadowSkull">
+                    <param id="0" name="Layer">1</param>
+                </action>
+                <action id="-24" name="Move to top" sid="9618307288887366" type="shadowSkull" />
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="2797862277306893">
+            <conditions>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8478165472663352" type="Skullgun">
+                    <param id="0" name="Instance variable">Dead</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="2451547438584145">
+                    <conditions>
+                        <condition behavior="LineOfSight" id="0" inverted="1" name="Has LOS to object" sid="8849285065599263" type="Skullgun">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                        <condition behavior="Pathfinding" id="4" inverted="1" name="Is moving along path" sid="4808449406803029" type="Skullgun" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="7507099014816326" type="Skullgun">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="5199883329233338">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="5" name="On arrived" sid="3713368733238791" type="Skullgun" />
+                        <condition behavior="LineOfSight" id="0" inverted="1" name="Has LOS to object" sid="1667132995913204" type="Skullgun">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="8766552207063181" type="Skullgun">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="7021523572040898">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="0" name="On path found" sid="4527203711964188" type="Skullgun" />
+                        <condition behavior="LineOfSight" id="0" inverted="1" name="Has LOS to object" sid="4403920658209817" type="Skullgun">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3343589349547091" type="Skullgun">
+                            <param id="0" name="Instance variable">Dead</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="1" name="Move along path" sid="7080186467059312" type="Skullgun" />
+                    </actions>
+                </event-block>
+                <event-block disabled="1" sid="7147430761270853">
+                    <conditions>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="188020609259346" type="Skullgun">
+                            <param id="0" name="Object">Skullgun</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="164575716384879" type="Skullgun">
+                            <param id="0" name="Instance variable">Dead</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block disabled="1" sid="1296615475045945">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="5976607454903758" type="Skullgun">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="X co-ordinate">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" disabled="1" id="7" name="Simulate control" sid="4176197366757903" type="Skullgun">
+                                    <param id="0" name="Control">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="7521598152180814">
+                            <conditions>
+                                <condition id="-1" name="Compare X" sid="2548948023614861" type="Skullgun">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="X co-ordinate">Player.X</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" disabled="1" id="7" name="Simulate control" sid="3603863865817929" type="Skullgun">
+                                    <param id="0" name="Control">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="3719590989266952">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="5837525984853438" type="Skullgun">
+                                    <param id="0" name="Comparison">2</param>
+                                    <param id="1" name="Y co-ordinate">Player.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" disabled="1" id="7" name="Simulate control" sid="6407735867795499" type="Skullgun">
+                                    <param id="0" name="Control">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="4327783039528276">
+                            <conditions>
+                                <condition id="-2" name="Compare Y" sid="4979472607694112" type="Skullgun">
+                                    <param id="0" name="Comparison">4</param>
+                                    <param id="1" name="Y co-ordinate">Player.Y</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="8Direction" disabled="1" id="7" name="Simulate control" sid="1825571007674813" type="Skullgun">
+                                    <param id="0" name="Control">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block disabled="1" sid="5674209465901964">
+                            <conditions>
+                                <condition behavior="Pathfinding" id="4" name="Is moving along path" sid="3265917817486414" type="Skullgun" />
+                            </conditions>
+                            <actions>
+                                <action behavior="Pathfinding" id="2" name="Stop" sid="3554597283332117" type="Skullgun" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block disabled="1" sid="641026418550214">
+                    <conditions>
+                        <condition behavior="Pathfinding" id="4" name="Is moving along path" sid="3210940702990079" type="Skullgun" />
+                        <condition id="-8" name="Compare two values" sid="165941184482658" type="System">
+                            <param id="0" name="First value">distance(Skullgun.Pathfinding.NodeXAt(Skullgun.Pathfinding.NodeCount - 1), Skullgun.Pathfinding.NodeYAt(Skullgun.Pathfinding.NodeCount-1), Player.X, Player.Y)</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">250</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="1836783406514028" type="Skullgun">
+                            <param id="0" name="Instance variable">Dead</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Pathfinding" id="0" name="Find path" sid="724162028985723" type="Skullgun">
+                            <param id="0" name="X">Player.X</param>
+                            <param id="1" name="Y">Player.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block disabled="1" sid="2667303128897398">
+            <conditions>
+                <condition id="-18" name="On created" sid="6810802320862407" type="Skullgun" />
+            </conditions>
+            <actions>
+                <action behavior="Pathfinding" id="5" name="Add obstacle" sid="7256473141109005" type="Skullgun">
+                    <param id="0" name="Obstacle">CollisionBox</param>
+                </action>
+                <action behavior="Pathfinding" disabled="1" id="5" name="Add obstacle" sid="3062022014343377" type="Skullgun">
+                    <param id="0" name="Obstacle">NPCs</param>
+                </action>
+                <action behavior="LineOfSight" id="2" name="Add obstacle" sid="8162686691948045" type="Skullgun">
+                    <param id="0" name="Obstacle">CollisionBox</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" disabled="1" sid="1447459678388459">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="970936608394264" type="Skullgun">
+                    <param id="0" name="Object">NPCs</param>
+                </condition>
+                <condition id="1" name="Is overlapping another object" sid="7697223520927302" type="Skullgun">
+                    <param id="0" name="Object">NPCs</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="4" name="Bounce off object" sid="8458229043007158" type="Skullgun">
+                    <param id="0" name="Object">NPCs</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block disabled="1" sid="1071660284651039">
+            <conditions>
+                <condition id="-24" name="For Each (ordered)" sid="6254888290275403" type="System">
+                    <param id="0" name="Object">NPCs</param>
+                    <param id="1" name="Expression">NPCs.Y</param>
+                    <param id="2" name="Order">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-24" name="Move to top" sid="7928497714930544" type="NPCs" />
+            </actions>
+        </event-block>
+        <event-block any="1" disabled="1" sid="9100314603973907">
+            <conditions />
+            <actions />
+            <sub-events>
+                <event-block disabled="1" sid="7353396291512602">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="9806490090944561" type="Skullgun">
+                            <param id="0" name="Object">Skullgun</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="1294730380533697" type="System">
+                            <param id="0" name="Interval (seconds)">0.1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="4848723552404044" type="Skullgun">
+                            <param id="0" name="Angle">angle(Self.X, Self.Y, Skullgun.X, Skullgun.Y)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

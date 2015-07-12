@@ -1,0 +1,1701 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>PlayerBak</name>
+    <events>
+        <variable constant="0" name="canPlace" sid="2134075709885853" static="0" type="number">1</variable>
+        <event-block sid="60">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="61" type="Player">
+                    <param id="0" name="Object">NPCs</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="460041516080393" type="Player">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="1715913565768021" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="5231113623892487" type="Player">
+                    <param id="0" name="Instance variable">Growth</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="8528143533650686" type="Player">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action disabled="1" id="-12" name="Subtract from" sid="62" type="Player">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Value">10</param>
+                </action>
+                <action disabled="1" id="0" name="Set text" sid="63" type="Text">
+                    <param id="0" name="Text">Player.health</param>
+                </action>
+                <action disabled="1" id="11" name="Set collisions enabled" sid="64" type="Player">
+                    <param id="0" name="Collisions">0</param>
+                </action>
+                <action behavior="Flash" id="0" name="Flash" sid="65" type="Player">
+                    <param id="0" name="&apos;On&apos; time">0.1</param>
+                    <param id="1" name="&apos;Off&apos; time">0.1</param>
+                    <param id="2" name="Duration">3</param>
+                </action>
+                <action disabled="1" id="-16" name="Wait" sid="66" type="System">
+                    <param id="0" name="Seconds">5.0</param>
+                </action>
+                <action disabled="1" id="11" name="Set collisions enabled" sid="67" type="Player">
+                    <param id="0" name="Collisions">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="68">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="69" type="System">
+                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">10</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="7753815788756398" type="System">
+                    <param id="0" name="First value">Player.8Direction.VectorX</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Second value">10</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="70" type="Player">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="71">
+            <conditions>
+                <condition id="-8" name="Compare two values" sid="72" type="System">
+                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Second value">-10</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="9261491127085489" type="System">
+                    <param id="0" name="First value">Player.8Direction.VectorX</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Second value">-10</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="73" type="Player">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1587307110468485">
+            <conditions>
+                <condition behavior="Flash" id="1" name="On flash ended" sid="4969112914437562" type="Player" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="6803770570985824" type="System">
+                    <param id="0" name="Seconds">3</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="3786578914400775">
+                    <conditions>
+                        <condition behavior="Flash" id="0" inverted="1" name="Is flashing" sid="838420994309888" type="Player" />
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="3282918349680858" type="Player">
+                            <param id="0" name="Instance variable">recover</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="8461644016481331">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="1553982792813778" type="Player">
+                    <param id="0" name="Instance variable">recover</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="349890256943689" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="2330412634429793">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="8331551065336041" type="System">
+                            <param id="0" name="First value">Player.health</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">100</param>
+                        </condition>
+                        <condition id="-1" name="Every tick" sid="5290230918563488" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="4190279819153324" type="Player">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1831225071534159">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="5758367517071057" type="System">
+                            <param id="0" name="First value">Player.health</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="7372560471820143" type="Player">
+                            <param id="0" name="Instance variable">health</param>
+                            <param id="1" name="Value">100</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="5155201807700906" type="Player">
+                            <param id="0" name="Instance variable">recover</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="74" title="Keyboard controls">
+            <sub-events>
+                <event-group description="" sid="290477427881223" title="TalkingKeyboard">
+                    <sub-events>
+                        <event-block any="1" sid="294">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="296" type="Keyboard">
+                                    <param id="0" name="Key">32 (Space)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="297">
+                                    <conditions>
+                                        <condition id="-15" name="Pick nearest/furthest" sid="298" type="npctest">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="X">Player.X</param>
+                                            <param id="2" name="Y">Player.Y</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="299" type="System">
+                                            <param id="0" name="First value">distance(Player.X, Player.Y, npctest.X, npctest.Y)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">100</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="300" type="System">
+                                            <param id="0" name="First value">Dialog.Y</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">WindowHeight</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Set position" sid="301" type="DialogBox">
+                                            <param id="0" name="X">Dialog.Width/2</param>
+                                            <param id="1" name="Y">WindowHeight+Dialog.Height/2</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="302" type="f">
+                                            <param id="0" name="Name">&quot;scrolldialog&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="303" type="f">
+                                            <param id="0" name="Name">&quot;typetext&quot;</param>
+                                            <param id="1" name="Parameter {n}">&quot;KWAK KWAK KWAK KWAK KWAK&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="304">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="3041091225728002" type="Keyboard">
+                                    <param id="0" name="Key">32 (Space)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="2642227727506289">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="307" type="System">
+                                            <param id="0" name="First value">index</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="306" type="System">
+                                            <param id="0" name="First value">index</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">len(text)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="308" type="f">
+                                            <param id="0" name="Name">&quot;hideDialog&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="309" type="System">
+                                            <param id="0" name="Variable">index</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="310" type="System">
+                                            <param id="0" name="Variable">text</param>
+                                            <param id="1" name="Value">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-block sid="2501112136365642">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="1198333667472442" type="Keyboard">
+                            <param id="0" name="Key">70 (F)</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="9166340694289442" type="Player">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="5797605485098191" type="System">
+                            <param id="0" name="Variable">canPlace</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="9934818691964325">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="8135241608475988" type="System">
+                                    <param id="0" name="First value">Player.bombs</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Compare two values" sid="3342052609120728" type="System">
+                                    <param id="0" name="First value">Bomb.Count</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="5277134659831456">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="391839063064306" type="System">
+                                            <param id="0" name="First value">Bomb.Count</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="6389239899307483" type="Player">
+                                            <param id="0" name="Object">Bomb</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">1</param>
+                                        </action>
+                                        <action id="-12" name="Subtract from" sid="5781084152788169" type="Player">
+                                            <param id="0" name="Instance variable">bombs</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>explode or bulletRing</comment>
+                                <event-block sid="6419108266392869">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="3712145577280237" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action disabled="1" id="0" name="Call function" sid="3904933018925147" type="f">
+                                            <param id="0" name="Name">&quot;explode&quot;</param>
+                                            <param id="1" name="Parameter {n}">Bomb.X{###}Bomb.Y{###}400{###}1000{###}40{###}1</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="1691474031084152" type="f">
+                                            <param id="0" name="Name">&quot;bulletRing&quot;</param>
+                                            <param id="1" name="Parameter {n}">Bomb.X{###}Bomb.Y{###}40{###}1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="6588699733349355" type="Bomb" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>throw box, if it hits a turret the turret becomes active</comment>
+                <event-block sid="9842657448211149">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="4294347728145523" type="Keyboard">
+                            <param id="0" name="Key">69 (E)</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8922983110025999" type="Player">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="4562281247047377" type="Player">
+                            <param id="0" name="Instance variable">boxes</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="1758491039184674" type="System">
+                            <param id="0" name="First value">throwableBox.Count</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="2364214968406943" type="System">
+                            <param id="0" name="First value">Turret.Count</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-12" name="Subtract from" sid="5355552233686377" type="Player">
+                            <param id="0" name="Instance variable">boxes</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="7205447818304266" type="Player">
+                            <param id="0" name="Object">throwableBox</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action behavior="Bullet" id="3" name="Set angle of motion" sid="673587159261039" type="throwableBox">
+                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y)</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="8187594346932262" type="throwableBox">
+                            <param id="0" name="Frame number">floor(random(2))</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Shoot 10 times a second while holding the left mouse button down.  Adjust the bullet angle by a random amount (-4 to +4 degrees) to add some inaccuracy to the firing.</comment>
+                <event-block sid="75">
+                    <conditions>
+                        <condition id="2" name="Mouse button is down" sid="76" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="4097901108918588" type="Player">
+                            <param id="0" name="Instance variable">dead</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" sid="77" type="System">
+                            <param id="0" name="Interval (seconds)">0.1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="78" type="Player">
+                            <param id="0" name="Object">Bullet</param>
+                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="79" type="Bullet">
+                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y)</param>
+                        </action>
+                        <action id="-18" name="Rotate clockwise" sid="80" type="Bullet">
+                            <param id="0" name="Degrees">random(-4, 4)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="7985953141015356">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="2914513135949377" type="Player">
+                                    <param id="0" name="Instance variable">Splice</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-13" name="Set boolean" sid="1344338490228653" type="Bullet">
+                                    <param id="0" name="Instance variable">splice</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Spread powerup</comment>
+                        <event-block sid="9986801063261289">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="3874022264262498" type="Player">
+                                    <param id="0" name="Instance variable">isSpread</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="6893970390927649">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="7950478114995967" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="4051156995935522" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 20</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="9704531893575899" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="6803130500282589">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="1371844194158594" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="6235352737014061" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="1561157724129123">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="3247616638592173" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="836938527083398" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 20</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="3747075380714741" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="2497178015616975">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="3787277169900798" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="8087114974361218" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Growth Powerup</comment>
+                        <event-block sid="5691614367322268">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="6015722438691172" type="Player">
+                                    <param id="0" name="Instance variable">Growth</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="9672510401790446">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="4819613013920495" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="148388363833855" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 25</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="8180833873476551" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="103156865319204">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="4712682397420951" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="5055566979013567" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="1189340351250972">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="9474168026475987" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="9873593350369262" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 25</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="2063887833056895" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="6594695821423405">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="3638844454113267" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="7915594545398587" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="1780415993290166">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="5351303971351906" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="4490868512472321" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 10</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="8095049584367596" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="1234851069170763">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="3847550668412868" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="8176369870982405" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="2697495059302241">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="4881456016259298" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="4143334744663275" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 10</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="8646896766497437" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="4390484104169229">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="3313719716330161" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="8135336305664243" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="3493314610059711">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="4594147253563418" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="4487756634829319" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 35</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="677763855120295" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="7069388977952861">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="5407084413917259" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="9138428267932124" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="3966294663038603">
+                                    <conditions />
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="1434890056415639" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="8499005087606106" type="Bullet">
+                                            <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 35</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="8076026739031136" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="8096686438487492">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="1233531381121513" type="Player">
+                                                    <param id="0" name="Instance variable">Splice</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-13" name="Set boolean" sid="1490180733992381" type="Bullet">
+                                                    <param id="0" name="Instance variable">splice</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Allow WASD as alternate controls to the default arrow keys.</comment>
+                <event-block sid="81">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="82" type="Keyboard">
+                            <param id="0" name="Key">87 (W)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="83" type="Player">
+                            <param id="0" name="Control">2</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="84">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="85" type="Keyboard">
+                            <param id="0" name="Key">65 (A)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="86" type="Player">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="87">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="88" type="Keyboard">
+                            <param id="0" name="Key">83 (S)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="89" type="Player">
+                            <param id="0" name="Control">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="90">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="91" type="Keyboard">
+                            <param id="0" name="Key">68 (D)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="92" type="Player">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="93" title="Gamepad Controls">
+            <sub-events>
+                <event-group description="" sid="9652924492508649" title="TalkingGamepad">
+                    <sub-events>
+                        <event-block any="1" sid="294">
+                            <conditions>
+                                <condition id="6" name="On button pressed" sid="295" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="297">
+                                    <conditions>
+                                        <condition id="-15" name="Pick nearest/furthest" sid="298" type="npctest">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="X">Player.X</param>
+                                            <param id="2" name="Y">Player.Y</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="299" type="System">
+                                            <param id="0" name="First value">distance(Player.X, Player.Y, npctest.X, npctest.Y)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">100</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="300" type="System">
+                                            <param id="0" name="First value">DialogBox.Y</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">WindowHeight</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Set position" sid="301" type="DialogBox">
+                                            <param id="0" name="X">DialogBox.Width/2</param>
+                                            <param id="1" name="Y">WindowHeight+DialogBox.Height/2</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="302" type="f">
+                                            <param id="0" name="Name">&quot;scrolldialog&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="303" type="f">
+                                            <param id="0" name="Name">&quot;typetext&quot;</param>
+                                            <param id="1" name="Parameter {n}">&quot;ERL MAH GERDLE!&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block any="1" sid="304">
+                            <conditions>
+                                <condition id="6" name="On button pressed" sid="305" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Button">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="2642227727506289">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="307" type="System">
+                                            <param id="0" name="First value">index</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="306" type="System">
+                                            <param id="0" name="First value">index</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">len(text)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="308" type="f">
+                                            <param id="0" name="Name">&quot;hideDialog&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="309" type="System">
+                                            <param id="0" name="Variable">index</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="310" type="System">
+                                            <param id="0" name="Variable">text</param>
+                                            <param id="1" name="Value">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="287" title="MovementGamepad">
+                    <sub-events>
+                        <event-block sid="94">
+                            <conditions>
+                                <condition id="5" name="Compare axis" sid="95" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Axis">0</param>
+                                    <param id="2" name="Comparison">1</param>
+                                    <param id="3" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" disabled="1" id="3" name="Accelerate" sid="96" type="Player">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Acceleration">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 0)</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="97" type="Player">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Speed">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 0)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="98">
+                            <conditions>
+                                <condition id="5" name="Compare axis" sid="99" type="Gamepad">
+                                    <param id="0" name="Gamepad">0</param>
+                                    <param id="1" name="Axis">1</param>
+                                    <param id="2" name="Comparison">1</param>
+                                    <param id="3" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" disabled="1" id="3" name="Accelerate" sid="100" type="Player">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Acceleration">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 1)</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="101" type="Player">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Speed">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="102">
+                            <conditions>
+                                <condition id="9" name="Is overlapping at offset" sid="103" type="Player">
+                                    <param id="0" name="Object">Wall</param>
+                                    <param id="1" name="Offset X">-1</param>
+                                    <param id="2" name="Offset Y">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="104" type="System">
+                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="105" type="Player">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Speed">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="106">
+                            <conditions>
+                                <condition id="9" name="Is overlapping at offset" sid="107" type="Player">
+                                    <param id="0" name="Object">Wall</param>
+                                    <param id="1" name="Offset X">1</param>
+                                    <param id="2" name="Offset Y">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="108" type="System">
+                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="109" type="Player">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Speed">0</param>
+                                </action>
+                                <action behavior="CustomMovement" disabled="1" id="10" name="Push out solid" sid="110" type="Player">
+                                    <param id="0" name="Direction">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="111">
+                            <conditions>
+                                <condition id="9" name="Is overlapping at offset" sid="112" type="Player">
+                                    <param id="0" name="Object">Wall</param>
+                                    <param id="1" name="Offset X">0</param>
+                                    <param id="2" name="Offset Y">1</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="113" type="System">
+                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="114" type="Player">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Speed">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="115">
+                            <conditions>
+                                <condition id="9" name="Is overlapping at offset" sid="116" type="Player">
+                                    <param id="0" name="Object">Wall</param>
+                                    <param id="1" name="Offset X">0</param>
+                                    <param id="2" name="Offset Y">-1</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="117" type="System">
+                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="118" type="Player">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Speed">0</param>
+                                </action>
+                                <action behavior="CustomMovement" disabled="1" id="10" name="Push out solid" sid="119" type="Player">
+                                    <param id="0" name="Direction">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="120">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="121" type="System">
+                                    <param id="0" name="First value">Player.CustomMovement.Speed</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">Player.8Direction.MaxSpeed</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="122" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">Player.8Direction.MaxSpeed</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="123">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="124" type="System">
+                                    <param id="0" name="Value">Gamepad.Axis(0, 1)</param>
+                                    <param id="1" name="Lower bound">0</param>
+                                    <param id="2" name="Upper bound">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="125" type="Player">
+                                    <param id="0" name="Which">2</param>
+                                    <param id="1" name="Speed">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="126">
+                            <conditions>
+                                <condition id="-21" name="Is between values" sid="127" type="System">
+                                    <param id="0" name="Value">Gamepad.Axis(0, 0)</param>
+                                    <param id="1" name="Lower bound">0</param>
+                                    <param id="2" name="Upper bound">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="128" type="Player">
+                                    <param id="0" name="Which">1</param>
+                                    <param id="1" name="Speed">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <comment>Shooting regularly, or with spread powerup</comment>
+                <event-block sid="371">
+                    <conditions>
+                        <condition id="3" inverted="1" name="Is button down" sid="372" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Button">5</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="129">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="130" type="System">
+                                    <param id="0" name="First value">Gamepad.Axis(0, 2)</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="131" type="System">
+                                    <param id="0" name="First value">Gamepad.Axis(0, 3)</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="132" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="133" type="Bullet">
+                                    <param id="0" name="Angle">angle(0, 0, Gamepad.Axis(0, 2), Gamepad.Axis(0, 3))</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="134" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="135">
+                                    <conditions>
+                                        <condition id="-8" name="Is boolean instance variable set" sid="136" type="Player">
+                                            <param id="0" name="Instance variable">isSpread</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="137" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="138" type="Bullet">
+                                            <param id="0" name="Angle">angle(0, 0, Gamepad.Axis(0, 2), Gamepad.Axis(0, 3))-20</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="139" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                        <action id="0" name="Spawn another object" sid="140" type="Player">
+                                            <param id="0" name="Object">Bullet</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                        </action>
+                                        <action id="-8" name="Set angle" sid="141" type="Bullet">
+                                            <param id="0" name="Angle">angle(0, 0, Gamepad.Axis(0, 2), Gamepad.Axis(0, 3))+20</param>
+                                        </action>
+                                        <action id="-18" name="Rotate clockwise" sid="142" type="Bullet">
+                                            <param id="0" name="Degrees">random(-4, 4)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="6834065309221479">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="6960372326821664" type="Player">
+                                    <param id="0" name="Instance variable">Growth</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="3655647939465674" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="8628783621048853" type="Bullet">
+                                    <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 20</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="9837433649378573" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="6936483893165528" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="5029568412801543" type="Bullet">
+                                    <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 20</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="9848873888348915" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="20326812776231" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="6418527882437933" type="Bullet">
+                                    <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 10</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="3940443600067182" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="2168760958426354" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="1482482351714527" type="Bullet">
+                                    <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 10</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="7114249182185487" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="8832884353748832" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="4984291967785594" type="Bullet">
+                                    <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) - 30</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="1481244082383108" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="199787406721472" type="Player">
+                                    <param id="0" name="Object">Bullet</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">&quot;ShootPoint&quot;</param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="3870238352229462" type="Bullet">
+                                    <param id="0" name="Angle">angle(Player.ImagePointX(1), Player.ImagePointY(1), Mouse.X, Mouse.Y) + 30</param>
+                                </action>
+                                <action id="-18" name="Rotate clockwise" sid="7468600900279452" type="Bullet">
+                                    <param id="0" name="Degrees">random(-4, 4)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Throwing a box at a turret, 1 at the time</comment>
+                <event-block sid="373">
+                    <conditions>
+                        <condition id="3" name="Is button down" sid="374" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Button">5</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="380" type="Player">
+                            <param id="0" name="Instance variable">boxes</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="381" type="System">
+                            <param id="0" name="First value">throwableBox.Count</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="382" type="System">
+                            <param id="0" name="First value">Turret.Count</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="leastDistance" sid="385" static="0" type="number">900000</variable>
+                        <variable constant="0" name="turretUID" sid="386" static="0" type="number">0</variable>
+                        <event-block any="1" sid="377">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="378" type="System">
+                                    <param id="0" name="First value">Gamepad.Axis(0, 2)</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="379" type="System">
+                                    <param id="0" name="First value">Gamepad.Axis(0, 3)</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="390" type="Player">
+                                    <param id="0" name="Instance variable">boxes</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="391" type="Player">
+                                    <param id="0" name="Object">throwableBox</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">1</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="392" type="throwableBox">
+                                    <param id="0" name="Angle">angle(0, 0, Gamepad.Axis(0, 2), Gamepad.Axis(0, 3))</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>throwing boxes with A, auto-aimed, UNUSED</comment>
+                <event-block sid="143">
+                    <conditions>
+                        <condition id="6" name="On button pressed" sid="144" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Button">0</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="145" type="Player">
+                            <param id="0" name="Instance variable">boxes</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="288" type="System">
+                            <param id="0" name="First value">throwableBox.Count</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="289" type="System">
+                            <param id="0" name="First value">Turret.Count</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="leastDistance" sid="146" static="0" type="number">900000</variable>
+                        <variable constant="0" name="turretUID" sid="147" static="0" type="number">0</variable>
+                        <event-block sid="148">
+                            <conditions>
+                                <condition id="-15" name="Pick nearest/furthest" sid="149" type="Turret">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="X">Player.X</param>
+                                    <param id="2" name="Y">Player.Y</param>
+                                </condition>
+                                <condition id="3" name="Compare frame" sid="150" type="Turret">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="151" type="Player">
+                                    <param id="0" name="Instance variable">boxes</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="152" type="Player">
+                                    <param id="0" name="Object">throwableBox</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">1</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="153" type="throwableBox">
+                                    <param id="0" name="Angle">angle(throwableBox.X, throwableBox.Y, Turret.X, Turret.Y)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="154">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="155" type="System" />
+                                <condition id="-11" name="For Each" sid="156" type="System">
+                                    <param id="0" name="Object">Turret</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="157" type="System">
+                                    <param id="0" name="First value">distance(Turret.X, Turret.Y, Player.X, Player.Y)</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">leastDistance</param>
+                                </condition>
+                                <condition id="3" name="Compare frame" sid="158" type="Turret">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Number">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="159" type="System">
+                                    <param id="0" name="Variable">leastDistance</param>
+                                    <param id="1" name="Value">distance(Turret.X, Turret.Y, Player.X, Player.Y)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="160" type="System">
+                                    <param id="0" name="Variable">turretUID</param>
+                                    <param id="1" name="Value">Turret.UID</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="161">
+                            <conditions>
+                                <condition id="-14" name="Pick by unique ID" sid="162" type="Turret">
+                                    <param id="0" name="Unique ID">turretUID</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="163" type="Player">
+                                    <param id="0" name="Instance variable">boxes</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="0" name="Spawn another object" sid="164" type="Player">
+                                    <param id="0" name="Object">throwableBox</param>
+                                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                                    <param id="2" name="Image point">1</param>
+                                </action>
+                                <action behavior="Bullet" id="3" name="Set angle of motion" sid="165" type="throwableBox">
+                                    <param id="0" name="Angle">angle(throwableBox.X, throwableBox.Y, Turret.X, Turret.Y)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="166" type="System">
+                                    <param id="0" name="Variable">leastDistance</param>
+                                    <param id="1" name="Value">900000</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Placing a bomb, press again for detonation</comment>
+                <event-block sid="290">
+                    <conditions>
+                        <condition id="6" name="On button pressed" sid="291" type="Gamepad">
+                            <param id="0" name="Gamepad">0</param>
+                            <param id="1" name="Button">2</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="1063697887696331" type="System">
+                            <param id="0" name="Variable">canPlace</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="369">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="316" type="System">
+                                    <param id="0" name="First value">Player.bombs</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                                <condition id="-8" inverted="1" name="Compare two values" sid="370" type="System">
+                                    <param id="0" name="First value">Bomb.Count</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="366">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="359" type="System">
+                                            <param id="0" name="First value">Bomb.Count</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="314" type="Player">
+                                            <param id="0" name="Object">Bomb</param>
+                                            <param id="1" name="Layer">&quot;Game&quot;</param>
+                                            <param id="2" name="Image point">1</param>
+                                        </action>
+                                        <action id="-12" name="Subtract from" sid="317" type="Player">
+                                            <param id="0" name="Instance variable">bombs</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="367">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="368" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="363" type="f">
+                                            <param id="0" name="Name">&quot;explode&quot;</param>
+                                            <param id="1" name="Parameter {n}">Bomb.X{###}Bomb.Y{###}400{###}1000{###}40{###}1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="364" type="Bomb" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <comment>detonate after set time, UNUSED</comment>
+        <event-block sid="318">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="319" type="Bomb" />
+            </conditions>
+            <actions>
+                <action disabled="1" id="-16" name="Wait" sid="320" type="System">
+                    <param id="0" name="Seconds">3.0</param>
+                </action>
+                <action disabled="1" id="0" name="Call function" sid="355" type="f">
+                    <param id="0" name="Name">&quot;explode&quot;</param>
+                    <param id="1" name="Parameter {n}">Bomb.X{###}Bomb.Y{###}400{###}1000{###}40{###}1</param>
+                </action>
+                <action disabled="1" id="-9" name="Destroy" sid="357" type="Bomb" />
+                <action id="-9" name="Set value" sid="5287078475674329" type="System">
+                    <param id="0" name="Variable">canPlace</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>destroy after distance</comment>
+        <event-block any="1" sid="852023808329549">
+            <conditions>
+                <condition behavior="Bullet" id="1" name="Compare distance travelled" sid="8578289516040742" type="Bullets">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Distance">1024</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Fade2" id="1" name="Start fade" sid="9422650181282073" type="Bullets" />
+            </actions>
+        </event-block>
+        <event-block sid="7529124096211565">
+            <conditions>
+                <condition behavior="Bullet" id="1" name="Compare distance travelled" sid="7064813112181716" type="throwableBox">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Distance">1024</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Fade" id="1" name="Start fade" sid="5048297641979675" type="throwableBox" />
+            </actions>
+        </event-block>
+        <event-block sid="7463274412640687">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="9478841719791012" type="Bullets">
+                    <param id="0" name="Object">CollisionBox</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="8486538451176543">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="204420227428977" type="Player">
+                            <param id="0" name="Instance variable">Bounce</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="0" name="Set speed" sid="5499034191545651" type="Bullets">
+                            <param id="0" name="Speed">70</param>
+                        </action>
+                        <action behavior="Fade2" id="1" name="Start fade" sid="7929969905269666" type="Bullets" />
+                    </actions>
+                </event-block>
+                <event-block sid="1752770344627771">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="3819426704907082" type="Player">
+                            <param id="0" name="Instance variable">Bounce</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="Bullet" id="4" name="Bounce off object" sid="4102387138307541" type="Bullets">
+                            <param id="0" name="Object">CollisionBox</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="3002131634776718">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="3912189093175833" type="throwableBox">
+                    <param id="0" name="Object">CollisionBox</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Bullet" id="0" name="Set speed" sid="506859287411735" type="throwableBox">
+                    <param id="0" name="Speed">70</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="9008974408257722" type="throwableBox" />
+            </actions>
+        </event-block>
+        <event-block sid="187766428770316">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="1324420876815809" type="System">
+                    <param id="0" name="Variable">canPlace</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+                <condition id="-4" name="Trigger once while true" sid="2903145200226194" type="System" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" sid="4133327988755211" type="System">
+                    <param id="0" name="Seconds">2</param>
+                </action>
+                <action id="-9" name="Set value" sid="1619243386701362" type="System">
+                    <param id="0" name="Variable">canPlace</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Mirror character</comment>
+        <event-block sid="9083589957856913">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="6302660749304966" type="System" />
+            </conditions>
+            <actions>
+                <action id="-8" name="Set angle" sid="9294645023832142" type="Player">
+                    <param id="0" name="Angle">(Player.8Direction.VectorX/Player.8Direction.MaxSpeed) * 10</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9165948459031093">
+            <conditions>
+                <condition id="-18" name="On created" sid="8925034372082664" type="Bullets" />
+            </conditions>
+            <actions>
+                <action id="-25" name="Move to bottom" sid="1512431979766802" type="Bullets" />
+            </actions>
+        </event-block>
+        <event-block any="1" sid="9047435186778228">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="3218610530403681" type="Bullet">
+                    <param id="0" name="Object">Skullgun</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="3311158346366068" type="Bullet">
+                    <param id="0" name="Object">CollisionBox</param>
+                </condition>
+                <condition id="-19" name="On destroyed" sid="5719322269538455" type="Bullet" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="1585366056257893">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="5308579663598146" type="Bullet">
+                            <param id="0" name="Instance variable">splice</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="8457728520262206" type="Bullet">
+                            <param id="0" name="Object">BulletMini</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">2</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="5082450720116638" type="BulletMini">
+                            <param id="0" name="Angle">Bullet.Angle + 80</param>
+                        </action>
+                        <action id="0" name="Spawn another object" sid="1187678386085444" type="Bullet">
+                            <param id="0" name="Object">BulletMini</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" sid="6047569621674323" type="BulletMini">
+                            <param id="0" name="Angle">Bullet.Angle - 80</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="7906205791358482" type="Bullet">
+                            <param id="0" name="Instance variable">splice</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="9459947462965323">
+            <conditions>
+                <condition behavior="8Direction" id="1" name="Compare speed" sid="8829449252643751" type="Player">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3700198243038692" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="4232571097241826" type="Player">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="4003053606129372" type="Player">
+                    <param id="0" name="Animation">&quot;run&quot;</param>
+                    <param id="1" name="From">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1981532899380142">
+            <conditions>
+                <condition behavior="8Direction" id="1" name="Compare speed" sid="3094031352420915" type="Player">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="Speed">5</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3263471541446052" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+                <condition id="2" inverted="1" name="Is playing" sid="9163167976329593" type="Player">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="455802636045715" type="Player">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9642413542498963">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="7954378708986452" type="Player">
+                    <param id="0" name="Instance variable">health</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="4748627576511684">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="625513338535816" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="2608011352329698" type="Player">
+                            <param id="0" name="Instance variable">dead</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action behavior="Flash" id="1" name="Stop flashing" sid="9563223817097203" type="Player" />
+                        <action id="4" name="Set animation" sid="3909673681631231" type="Player">
+                            <param id="0" name="Animation">&quot;death&quot;</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action behavior="8Direction" id="2" name="Set ignoring input" sid="1682546923184166" type="Player">
+                            <param id="0" name="Input">1</param>
+                        </action>
+                        <action behavior="8Direction" id="0" name="Stop" sid="1219834626106103" type="Player" />
+                        <action id="-26" name="Move to layer" sid="3245681059127931" type="Player">
+                            <param id="0" name="Layer">6</param>
+                        </action>
+                        <action id="11" name="Set collisions enabled" sid="7858957617398947" type="Player">
+                            <param id="0" name="Collisions">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="572504421626904">
+            <conditions>
+                <condition id="-18" name="On created" sid="8541498322405631" type="Player" />
+            </conditions>
+            <actions>
+                <action id="-26" name="Move to layer" sid="1259589171163939" type="shadow">
+                    <param id="0" name="Layer">2</param>
+                </action>
+                <action id="-4" name="Set position to another object" sid="7158251879629967" type="shadow">
+                    <param id="0" name="Object">Player</param>
+                    <param id="1" name="Image point (optional)">2</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="9892372488418537" type="shadow">
+                    <param id="0" name="Pin to">Player</param>
+                    <param id="1" name="Mode">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="8590180408548677">
+            <conditions>
+                <condition id="2" name="Is playing" sid="8343628352840568" type="Player">
+                    <param id="0" name="Animation">&quot;death&quot;</param>
+                </condition>
+                <condition disabled="1" id="3" name="Compare frame" sid="8356391423735257" type="Player">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Number">8</param>
+                </condition>
+                <condition disabled="1" id="-4" name="Trigger once while true" sid="6954475373919942" type="System" />
+                <condition id="-8" name="Compare two values" sid="4236001792457451" type="System">
+                    <param id="0" name="First value">Ghost.Count</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="1700685855866409" type="System">
+                    <param id="0" name="Object to create">Ghost</param>
+                    <param id="1" name="Layer">6</param>
+                    <param id="2" name="X">Player.X</param>
+                    <param id="3" name="Y">Player.Y</param>
+                </action>
+                <action behavior="Bullet" id="3" name="Set angle of motion" sid="8126148695485834" type="Ghost">
+                    <param id="0" name="Angle">-90</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3139088420337954">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="8415063791716037" type="Ghost" />
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="8553620165580852" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="8437432045741387">
+            <conditions>
+                <condition id="-8" name="Is boolean instance variable set" sid="2869277796009929" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" sid="1030149646705614" type="redOverlay">
+                    <param id="0" name="Opacity">redOverlay.Opacity + 1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1439947600398659">
+            <conditions>
+                <condition id="4" name="On finished" sid="5749612261952394" type="Player">
+                    <param id="0" name="Animation">&quot;hit&quot;</param>
+                </condition>
+                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3913921675711434" type="Player">
+                    <param id="0" name="Instance variable">dead</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="9275305822617818" type="Player">
+                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

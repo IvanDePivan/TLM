@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Human</name>
+    <events>
+        <event-block sid="1963444666244691">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="841260637472003" type="Human">
+                    <param id="0" name="Instance variable">state</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;idle&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="869920493731463">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="3708374460203216" type="Human">
+                    <param id="0" name="Instance variable">state</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">&quot;walk&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="58447841157482">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="8767613213394836" type="Human">
+                            <param id="0" name="Instance variable">left</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="2788086975309139" type="Human">
+                            <param id="0" name="Control">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7942148766016219">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="9317064014014319" type="Human">
+                            <param id="0" name="Instance variable">left</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="8Direction" id="7" name="Simulate control" sid="4332170702187239" type="Human">
+                            <param id="0" name="Control">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1257611301807334">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="2664736361265654" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-14" name="Toggle boolean" sid="1720489722764619" type="Human">
+                            <param id="0" name="Instance variable">left</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="4725384411692872">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="9917821497060354" type="System">
+                    <param id="0" name="Interval (seconds)">6</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="3511922237478202">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="9002225023225696" type="Human">
+                            <param id="0" name="Instance variable">state</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;walk&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="9849580953082122" type="Human">
+                            <param id="0" name="Instance variable">state</param>
+                            <param id="1" name="Value">&quot;idle&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4119160484521367">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="8803279298724624" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="1263351411110467" type="Human">
+                            <param id="0" name="Instance variable">state</param>
+                            <param id="1" name="Value">&quot;walk&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

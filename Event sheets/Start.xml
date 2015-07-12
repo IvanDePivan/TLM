@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Start</name>
+    <events>
+        <comment>This layout contains the start menu</comment>
+        <comment bookmark="1">TODO: Menu features, start game, possibly options, mute button, full screen button, etc.</comment>
+        <event-block sid="1298331940980346">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="3842862615431314" type="System" />
+            </conditions>
+            <actions />
+        </event-block>
+    </events>
+</c2eventsheet>

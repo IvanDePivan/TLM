@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Boot</name>
+    <events>
+        <comment bookmark="1">TODO: A custom loading bar</comment>
+        <variable comment="Whether the game has initially loaded " constant="0" name="loaded" sid="515909961809747" static="0" type="number">0</variable>
+        <comment>On start set the max of the progress bar</comment>
+        <event-block sid="611562148029417">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="5462005841575331" type="System" />
+            </conditions>
+            <actions>
+                <action id="4" name="Set maximum" sid="8213541705442746" type="PlaceholderProgressBar">
+                    <param id="0" name="Maximum">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Every tick, show the progress made</comment>
+        <event-block sid="5474946243017594">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="4524580609471996" type="System">
+                    <param id="0" name="Interval (seconds)">0.01</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="5166013812023253" type="System">
+                    <param id="0" name="First value">loaded</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Second value">0</param>
+                </condition>
+                <condition id="-8" name="Compare two values" sid="177604687449189" type="System">
+                    <param id="0" name="First value">PlaceholderProgressBar.Progress</param>
+                    <param id="1" name="Comparison">2</param>
+                    <param id="2" name="Second value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="3" name="Set progress" sid="5599553409019326" type="PlaceholderProgressBar">
+                    <param id="0" name="Value">lerp(PlaceholderProgressBar.Progress, loadingprogress, 0.05)</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="8288967285780481">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="7554819754836049" type="System">
+                            <param id="0" name="First value">PlaceholderProgressBar.Progress</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">0.95</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="447514434893263" type="System">
+                            <param id="0" name="First value">loadingprogress</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="8156465259462747" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="5991786907302531" type="f">
+                            <param id="0" name="Name">&quot;boot.loaded&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <comment>If loading is done (waits for visual to catch up) then fades.</comment>
+        <event-block sid="8495397772800102">
+            <conditions>
+                <condition id="0" name="On function" sid="5291907020409083" type="f">
+                    <param id="0" name="Name">&quot;boot.loaded&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="2039239590528976" type="System">
+                    <param id="0" name="Variable">loaded</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="3" name="Set progress" sid="5854225953407001" type="PlaceholderProgressBar">
+                    <param id="0" name="Value">1</param>
+                </action>
+                <action behavior="Fade" id="1" name="Start fade" sid="4097259652701437" type="LoadingAnimation" />
+                <action behavior="Fade" id="1" name="Start fade" sid="5723777973017159" type="BootBackground" />
+            </actions>
+        </event-block>
+        <comment>Once the loading animation has faded, load the next layout</comment>
+        <event-block sid="8753869283685515">
+            <conditions>
+                <condition id="-19" name="On destroyed" sid="2811441934232882" type="LoadingAnimation" />
+            </conditions>
+            <actions>
+                <action id="-25" name="Go to layout (by name)" sid="8361302129427641" type="System">
+                    <param id="0" name="Layout">&quot;Start&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
