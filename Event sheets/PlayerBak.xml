@@ -54,11 +54,6 @@
                     <param id="1" name="Comparison">4</param>
                     <param id="2" name="Second value">10</param>
                 </condition>
-                <condition id="-8" name="Compare two values" sid="7753815788756398" type="System">
-                    <param id="0" name="First value">Player.8Direction.VectorX</param>
-                    <param id="1" name="Comparison">4</param>
-                    <param id="2" name="Second value">10</param>
-                </condition>
             </conditions>
             <actions>
                 <action id="7" name="Set mirrored" sid="70" type="Player">
@@ -70,11 +65,6 @@
             <conditions>
                 <condition id="-8" name="Compare two values" sid="72" type="System">
                     <param id="0" name="First value">Player.CustomMovement.dx</param>
-                    <param id="1" name="Comparison">2</param>
-                    <param id="2" name="Second value">-10</param>
-                </condition>
-                <condition id="-8" name="Compare two values" sid="9261491127085489" type="System">
-                    <param id="0" name="First value">Player.8Direction.VectorX</param>
                     <param id="1" name="Comparison">2</param>
                     <param id="2" name="Second value">-10</param>
                 </condition>
@@ -677,11 +667,7 @@
                             <param id="0" name="Key">87 (W)</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action behavior="8Direction" id="7" name="Simulate control" sid="83" type="Player">
-                            <param id="0" name="Control">2</param>
-                        </action>
-                    </actions>
+                    <actions />
                 </event-block>
                 <event-block sid="84">
                     <conditions>
@@ -689,11 +675,7 @@
                             <param id="0" name="Key">65 (A)</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action behavior="8Direction" id="7" name="Simulate control" sid="86" type="Player">
-                            <param id="0" name="Control">0</param>
-                        </action>
-                    </actions>
+                    <actions />
                 </event-block>
                 <event-block sid="87">
                     <conditions>
@@ -701,11 +683,7 @@
                             <param id="0" name="Key">83 (S)</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action behavior="8Direction" id="7" name="Simulate control" sid="89" type="Player">
-                            <param id="0" name="Control">3</param>
-                        </action>
-                    </actions>
+                    <actions />
                 </event-block>
                 <event-block sid="90">
                     <conditions>
@@ -713,11 +691,7 @@
                             <param id="0" name="Key">68 (D)</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action behavior="8Direction" id="7" name="Simulate control" sid="92" type="Player">
-                            <param id="0" name="Control">1</param>
-                        </action>
-                    </actions>
+                    <actions />
                 </event-block>
             </sub-events>
         </event-group>
@@ -821,16 +795,7 @@
                                     <param id="3" name="Value">0</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action behavior="CustomMovement" disabled="1" id="3" name="Accelerate" sid="96" type="Player">
-                                    <param id="0" name="Which">1</param>
-                                    <param id="1" name="Acceleration">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 0)</param>
-                                </action>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="97" type="Player">
-                                    <param id="0" name="Which">1</param>
-                                    <param id="1" name="Speed">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 0)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
                         <event-block sid="98">
                             <conditions>
@@ -841,16 +806,7 @@
                                     <param id="3" name="Value">0</param>
                                 </condition>
                             </conditions>
-                            <actions>
-                                <action behavior="CustomMovement" disabled="1" id="3" name="Accelerate" sid="100" type="Player">
-                                    <param id="0" name="Which">2</param>
-                                    <param id="1" name="Acceleration">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 1)</param>
-                                </action>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="101" type="Player">
-                                    <param id="0" name="Which">2</param>
-                                    <param id="1" name="Speed">(Player.8Direction.MaxSpeed/100)*Gamepad.Axis(0, 1)</param>
-                                </action>
-                            </actions>
+                            <actions />
                         </event-block>
                         <event-block sid="102">
                             <conditions>
@@ -935,21 +891,6 @@
                                 </action>
                                 <action behavior="CustomMovement" disabled="1" id="10" name="Push out solid" sid="119" type="Player">
                                     <param id="0" name="Direction">0</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="120">
-                            <conditions>
-                                <condition id="-8" name="Compare two values" sid="121" type="System">
-                                    <param id="0" name="First value">Player.CustomMovement.Speed</param>
-                                    <param id="1" name="Comparison">4</param>
-                                    <param id="2" name="Second value">Player.8Direction.MaxSpeed</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action behavior="CustomMovement" id="2" name="Set speed" sid="122" type="Player">
-                                    <param id="0" name="Which">0</param>
-                                    <param id="1" name="Speed">Player.8Direction.MaxSpeed</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -1480,11 +1421,7 @@
             <conditions>
                 <condition id="-1" name="Every tick" sid="6302660749304966" type="System" />
             </conditions>
-            <actions>
-                <action id="-8" name="Set angle" sid="9294645023832142" type="Player">
-                    <param id="0" name="Angle">(Player.8Direction.VectorX/Player.8Direction.MaxSpeed) * 10</param>
-                </action>
-            </actions>
+            <actions />
         </event-block>
         <event-block sid="9165948459031093">
             <conditions>
@@ -1539,10 +1476,6 @@
         </event-block>
         <event-block sid="9459947462965323">
             <conditions>
-                <condition behavior="8Direction" id="1" name="Compare speed" sid="8829449252643751" type="Player">
-                    <param id="0" name="Comparison">4</param>
-                    <param id="1" name="Speed">5</param>
-                </condition>
                 <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3700198243038692" type="Player">
                     <param id="0" name="Instance variable">dead</param>
                 </condition>
@@ -1559,10 +1492,6 @@
         </event-block>
         <event-block sid="1981532899380142">
             <conditions>
-                <condition behavior="8Direction" id="1" name="Compare speed" sid="3094031352420915" type="Player">
-                    <param id="0" name="Comparison">3</param>
-                    <param id="1" name="Speed">5</param>
-                </condition>
                 <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3263471541446052" type="Player">
                     <param id="0" name="Instance variable">dead</param>
                 </condition>
@@ -1601,10 +1530,6 @@
                             <param id="0" name="Animation">&quot;death&quot;</param>
                             <param id="1" name="From">1</param>
                         </action>
-                        <action behavior="8Direction" id="2" name="Set ignoring input" sid="1682546923184166" type="Player">
-                            <param id="0" name="Input">1</param>
-                        </action>
-                        <action behavior="8Direction" id="0" name="Stop" sid="1219834626106103" type="Player" />
                         <action id="-26" name="Move to layer" sid="3245681059127931" type="Player">
                             <param id="0" name="Layer">6</param>
                         </action>

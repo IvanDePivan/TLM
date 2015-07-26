@@ -3,51 +3,11 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>PlayerMovement</name>
     <events>
-        <comment bookmark="1">TODO: 2d directional vector movement that abides by solids and such</comment>
-        <event-block sid="9728221761220828">
-            <conditions>
-                <condition id="0" name="On function" sid="1689373934147468" type="f">
-                    <param id="0" name="Name">&quot;player.move&quot;</param>
-                </condition>
-            </conditions>
-            <actions />
-            <sub-events>
-                <comment>Moves the player using a directional vector&#x0D;&#x0A;@param0: XVector&#x0D;&#x0A;@param1: YVector</comment>
-                <variable constant="0" name="xVector" sid="7277619434981507" static="0" type="number">0</variable>
-                <variable constant="0" name="yVector" sid="7109651447067467" static="0" type="number">0</variable>
-                <event-block sid="4406345828028823">
-                    <conditions>
-                        <condition id="-8" name="Compare two values" sid="2202454314739603" type="System">
-                            <param id="0" name="First value">f.ParamCount</param>
-                            <param id="1" name="Comparison">5</param>
-                            <param id="2" name="Second value">2</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action behavior="CustomMovement" disabled="1" id="2" name="Set speed" sid="594872503610204" type="Player">
-                            <param id="0" name="Which">1</param>
-                            <param id="1" name="Speed">f.Param(0)</param>
-                        </action>
-                        <action behavior="CustomMovement" disabled="1" id="2" name="Set speed" sid="9244916120399808" type="Player">
-                            <param id="0" name="Which">2</param>
-                            <param id="1" name="Speed">f.param(1)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="6927199280808225" type="System">
-                            <param id="0" name="Variable">xVector</param>
-                            <param id="1" name="Value">f.Param(0)</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <comment>TODO: acceleration, deceleration, collision</comment>
-                        <comment>Calculate the speed of the player</comment>
-                        <event-block sid="1630250218132364">
-                            <conditions />
-                            <actions />
-                        </event-block>
-                    </sub-events>
-                </event-block>
-            </sub-events>
-        </event-block>
+        <variable constant="0" name="playerMaxspeed" sid="7075143724139972" static="0" type="number">400</variable>
+        <variable constant="0" name="playerAcceleration" sid="6510200713045481" static="0" type="number">2000</variable>
+        <variable constant="0" name="playerDeceleration" sid="2108925880639714" static="0" type="number">2000</variable>
+        <comment>So the point here is to do the actual moving of the player. Every tick the speed, the old position, the new position, the acceleration; all must be calculated.</comment>
+        <comment bookmark="1">TODO: Collision!</comment>
         <event-block sid="2044939183207458">
             <conditions>
                 <condition id="0" name="On function" sid="2837322492977791" type="f">
@@ -56,14 +16,556 @@
             </conditions>
             <actions />
             <sub-events>
-                <comment>Increases or decreases speed of the player according to the acceleration rate. returns max speed if it would go over the max speed&#x0D;&#x0A;@param0</comment>
-                <variable comment="The increase in speed in pixels per second" constant="0" name="acceleration" sid="2419782073482035" static="0" type="number">100</variable>
-                <variable comment="The maximum overal speed in pixels per second" constant="0" name="maxSpeed" sid="4304439311050766" static="0" type="number">0</variable>
-                <event-block sid="2049483023340071">
+                <comment>Increases or decreases speed of the player according to the acceleration rate. returns max speed if it would go over the max speed&#x0D;&#x0A;&#x0D;&#x0A;@param0 Xinput (-100 through 100)&#x0D;&#x0A;@param1 Yinput (-100 through 100)</comment>
+                <variable constant="0" name="localMaxSpeed" sid="9951576149534753" static="0" type="number">0</variable>
+                <variable constant="0" name="inputDistance" sid="5994645536119658" static="0" type="number">0</variable>
+                <variable constant="0" name="inputDistanceClamped" sid="2233964006948608" static="0" type="number">0</variable>
+                <variable constant="0" name="maxInput" sid="8277954083950627" static="0" type="number">90</variable>
+                <variable constant="0" name="minInput" sid="8736521399202843" static="0" type="number">0</variable>
+                <comment>Is already overlapping solid: must have moved itself in (e.g. by rotating or being crushed), so push out</comment>
+                <event-block sid="7991501310892763">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="7014968468843837" type="Player">
+                            <param id="0" name="Object">Solids</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" id="10" name="Push out solid" sid="1624303693838082" type="Player">
+                            <param id="0" name="Direction">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Calculate input and clamp it between 0 and 90&#x0D;&#x0A;Calculate current max speed based on input</comment>
+                <event-block sid="440264534461154">
                     <conditions />
-                    <actions />
+                    <actions>
+                        <action id="-9" name="Set value" sid="2367543602089425" type="System">
+                            <param id="0" name="Variable">inputDistance</param>
+                            <param id="1" name="Value">distance(0, 0, f.Param(0), f.Param(1))</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="4901623708761686" type="System">
+                            <param id="0" name="Variable">inputDistanceClamped</param>
+                            <param id="1" name="Value">clamp(inputDistance, 0, 90)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="5471228267129425" type="System">
+                            <param id="0" name="Variable">localMaxSpeed</param>
+                            <param id="1" name="Value">(playerMaxspeed/maxInput) * inputDistanceClamped</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>X vector</comment>
+                        <event-block sid="1003632526870353">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="inputDirectionXVector" sid="2718596088153965" static="0" type="number">0</variable>
+                                <variable constant="0" name="xLocalMaxSpeed" sid="7261412338959845" static="0" type="number">0</variable>
+                                <event-block sid="1632331985742263">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="7411055141875083" type="System">
+                                            <param id="0" name="First value">f.Param(0)</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="3328774384448867" type="System">
+                                            <param id="0" name="Variable">inputDirectionXVector</param>
+                                            <param id="1" name="Value">f.Param(0)/inputDistance</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="2971670854572308" type="System">
+                                            <param id="0" name="Variable">xLocalMaxSpeed</param>
+                                            <param id="1" name="Value">inputDirectionXVector * localMaxSpeed</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>xLocalMaxSpeed can be anywhere from -playermaxspeed to playermaxspeed. </comment>
+                                <comment>Pressing not left or right or both</comment>
+                                <event-block sid="5162559542827968">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="1956671392661337" type="System">
+                                            <param id="0" name="First value">xLocalMaxSpeed</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="4614051774352536">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="2714917044871452" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">xLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="363255163406787" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx + (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <comment>If it accelerates beyond the 0 point, just put 0</comment>
+                                                <event-block sid="3711139334239364">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="2345138362392468" type="System">
+                                                            <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Second value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="315227843565686" type="Player">
+                                                            <param id="0" name="Which">1</param>
+                                                            <param id="1" name="Speed">0</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="3292954877247606">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="5748522417926303" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="3608569570862066" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">xLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="9578992003601381" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx - (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <comment>If it decelerates beyond the 0 point, just put 0</comment>
+                                                <event-block sid="1654941263493196">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="2687789131684712" type="System">
+                                                            <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                            <param id="1" name="Comparison">2</param>
+                                                            <param id="2" name="Second value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="6005446991208719" type="Player">
+                                                            <param id="0" name="Which">1</param>
+                                                            <param id="1" name="Speed">0</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Pressing left</comment>
+                                <event-block sid="898110078543865">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="8317481453671426" type="System">
+                                            <param id="0" name="First value">xLocalMaxSpeed</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Player is pressing the opposite direction.</comment>
+                                        <event-block sid="5311916897339722">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="5116216518350433" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="1940413497323202" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx + ((playerAcceleration + playerDeceleration) * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="3399123337284308">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="5190139403683936" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="4045154798480438" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">xLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="6202144084365182" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx - (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>accelerate if going too slow</comment>
+                                        <event-block sid="6559246142509274">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="503093098248878" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="2045822927849671" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">xLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="7827879500891982" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx + (playerAcceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Pressing right</comment>
+                                <event-block sid="3421950575319095">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="4057596579416736" type="System">
+                                            <param id="0" name="First value">xLocalMaxSpeed</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Player is pressing the opposite direction.</comment>
+                                        <event-block sid="1601866432339623">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="1362477417060825" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="8680338310442895" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx - ((playerAcceleration + playerDeceleration) * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="2363626648926085">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="4334997358171072" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">xLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4114758759349559" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx + (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>accelerate if going too slow</comment>
+                                        <event-block sid="6650502332315905">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="7590467219507605" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="7266161195953549" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dx</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">xLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4141818854401359" type="Player">
+                                                    <param id="0" name="Which">1</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dx - (playerAcceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Y vector</comment>
+                        <event-block sid="6191897690360504">
+                            <conditions />
+                            <actions />
+                            <sub-events>
+                                <variable constant="0" name="inputDirectionYVector" sid="1170086399531411" static="0" type="number">0</variable>
+                                <variable constant="0" name="yLocalMaxSpeed" sid="3817572997321604" static="0" type="number">0</variable>
+                                <event-block sid="6714262437219228">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="4402089322712188" type="System">
+                                            <param id="0" name="First value">f.Param(1)</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="3764764840298629" type="System">
+                                            <param id="0" name="Variable">inputDirectionYVector</param>
+                                            <param id="1" name="Value">f.Param(1)/inputDistance</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="4912081526417415" type="System">
+                                            <param id="0" name="Variable">yLocalMaxSpeed</param>
+                                            <param id="1" name="Value">inputDirectionYVector * localMaxSpeed</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>yLocalMaxSpeed can be anywhere from -playermaxspeed to playermaxspeed. </comment>
+                                <comment>Pressing not up or down or both</comment>
+                                <event-block sid="2049483023340071">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="5077633726253155" type="System">
+                                            <param id="0" name="First value">yLocalMaxSpeed</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="9924178643835095">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="999163774417992" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">yLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="3830243711688449" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy + (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="6238273865094608">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="8603211281132439" type="System">
+                                                            <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Second value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="3533315302549585" type="Player">
+                                                            <param id="0" name="Which">2</param>
+                                                            <param id="1" name="Speed">0</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="3485837358929718">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="9054423206846708" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="7103123049653169" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">yLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="5677855555838333" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy - (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="9919385890539759">
+                                                    <conditions>
+                                                        <condition id="-8" name="Compare two values" sid="4643274755596836" type="System">
+                                                            <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                            <param id="1" name="Comparison">2</param>
+                                                            <param id="2" name="Second value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="8576556162174872" type="Player">
+                                                            <param id="0" name="Which">2</param>
+                                                            <param id="1" name="Speed">0</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Pressing down</comment>
+                                <event-block sid="8105505347080032">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="2535264277841891" type="System">
+                                            <param id="0" name="First value">yLocalMaxSpeed</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Player is pressing the opposite direction.</comment>
+                                        <event-block sid="2932346894359357">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="5726228294482281" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="1210372066671986" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy + ((playerAcceleration + playerDeceleration) * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="737496877120445">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="131783970306519" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="996216500524677" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">yLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="9760419240664658" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy - (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>accelerate if going too slow</comment>
+                                        <event-block sid="9770510610899565">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="3846079819616529" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="598429785684781" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">yLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="7993215105076097" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy + (playerAcceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Pressing up</comment>
+                                <event-block sid="3813025576217155">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="5319812649206558" type="System">
+                                            <param id="0" name="First value">yLocalMaxSpeed</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Player is pressing the opposite direction.</comment>
+                                        <event-block sid="5069093403536273">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="2818043843141884" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="3328379507986879" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy - ((playerAcceleration + playerDeceleration) * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Decelerate if going too fast</comment>
+                                        <event-block sid="4186422698028366">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="984042092984365" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">yLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="8479605405166566" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy + (playerDeceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>accelerate if going too slow</comment>
+                                        <event-block sid="4651697586177657">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="8325787838109772" type="System" />
+                                                <condition id="-8" name="Compare two values" sid="1079667850579059" type="System">
+                                                    <param id="0" name="First value">Player.CustomMovement.dy</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Second value">yLocalMaxSpeed</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4524636963330371" type="Player">
+                                                    <param id="0" name="Which">2</param>
+                                                    <param id="1" name="Speed">Self.CustomMovement.dy - (playerAcceleration * dt)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>If player goes above max speed (PlayerMaxSpeed), cap it</comment>
+                <event-block sid="1021934969424754">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="754708739495596" type="System">
+                            <param id="0" name="First value">Player.CustomMovement.Speed</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">playerMaxspeed</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" id="2" name="Set speed" sid="7372153877176142" type="Player">
+                            <param id="0" name="Which">0</param>
+                            <param id="1" name="Speed">playerMaxspeed</param>
+                        </action>
+                    </actions>
                 </event-block>
             </sub-events>
+        </event-block>
+        <comment>Collision by horizontal and vertical step. Check the code from 8direction</comment>
+        <event-block sid="7263496425253997">
+            <conditions>
+                <condition behavior="CustomMovement" id="2" name="On step" sid="3908247242877755" type="Player" />
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="2441027628927502" type="f">
+                    <param id="0" name="Name">&quot;player.inputDirectionalVector&quot;</param>
+                    <param id="1" name="Parameter {n}">Gamepad.Axis(0, 0){###}Gamepad.Axis(0, 1)</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6963891445435437">
+            <conditions>
+                <condition behavior="CustomMovement" id="3" name="On horizontal step" sid="3303857410499469" type="Player" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="6329004108099713">
+            <conditions>
+                <condition behavior="CustomMovement" id="4" name="On vertical step" sid="8297432807089759" type="Player" />
+            </conditions>
+            <actions />
         </event-block>
     </events>
 </c2eventsheet>

@@ -3,12 +3,12 @@
     <name>The Last Mailman</name>
     <description></description>
     <version>0.5</version>
-    <author>Ivan Horn, Geis Witkamp</author>
+    <author>Ivan Horn, Gijs Witkamp</author>
     <author-email></author-email>
     <author-website></author-website>
     <app-id></app-id>
     <unique-id>3k8y8jenijj4j</unique-id>
-    <saved-with-version>20502</saved-with-version>
+    <saved-with-version>21000</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
@@ -54,7 +54,7 @@
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
     <first-layout>Boot</first-layout>
-    <use-loader-layout>1</use-loader-layout>
+    <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">No</prop>
         <prop name="Downscaling">Medium quality</prop>
@@ -738,11 +738,6 @@
                 <instance-variables>
                     <instance-variable name="cityblockUID" sid="2914772187110429" type="number" />
                 </instance-variables>
-                <behaviors>
-                    <behavior-type name="Solid" sid="6402376413383631">
-                        <behavior id="solid" />
-                    </behavior-type>
-                </behaviors>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2386093043043796" speed="5">
                         <frame duration="1" hotspotX="0" hotspotY="0" />
@@ -1713,6 +1708,9 @@
             <object-type name="NWjs" sid="1706787413030974">
                 <plugin id="NodeWebkit" />
             </object-type>
+            <object-type global="1" name="Array" sid="7929048312196305">
+                <plugin id="Arr" />
+            </object-type>
         </object-folder>
         <object-folder name="layouts">
             <object-folder name="boot">
@@ -1833,7 +1831,11 @@
                     </behaviors>
                 </object-type>
             </object-folder>
-            <object-folder name="start" />
+            <object-folder name="start">
+                <object-type name="debugText" sid="9137008346979472">
+                    <plugin id="Text" />
+                </object-type>
+            </object-folder>
         </object-folder>
         <object-type name="Player" sid="12">
             <plugin id="Sprite" />
@@ -1853,9 +1855,6 @@
                 <instance-variable name="explode" sid="5063391534923114" type="boolean" />
             </instance-variables>
             <behaviors>
-                <behavior-type name="8Direction" sid="17">
-                    <behavior id="EightDir" />
-                </behavior-type>
                 <behavior-type name="CustomMovement" sid="20">
                     <behavior id="custom" />
                 </behavior-type>
@@ -1867,9 +1866,6 @@
                 </behavior-type>
                 <behavior-type name="Timer" sid="3100998391439559">
                     <behavior id="Timer" />
-                </behavior-type>
-                <behavior-type name="Solid" sid="6947237842990681">
-                    <behavior id="solid" />
                 </behavior-type>
                 <behavior-type name="ScrollTo" sid="541037569755683">
                     <behavior id="scrollto" />
@@ -2232,6 +2228,16 @@
                 <member>Turret</member>
             </members>
         </family>
+        <family name="Solids" plugin-id="Sprite" sid="9198727350360738">
+            <members>
+                <member>CollisionBox</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Solid" sid="7760421569028212">
+                    <behavior id="solid" />
+                </behavior-type>
+            </behaviors>
+        </family>
     </families>
     <layout-folder>
         <layout-folder name="bak">
@@ -2267,6 +2273,10 @@
             <event-sheet>Boot.xml</event-sheet>
             <event-sheet>Start.xml</event-sheet>
             <event-sheet>CommonLayout.xml</event-sheet>
+        </event-folder>
+        <event-folder name="test">
+            <event-sheet>IncludeAll.xml</event-sheet>
+            <event-sheet>PlayerTest.xml</event-sheet>
         </event-folder>
         <event-sheet>Main.xml</event-sheet>
     </event-folder>
