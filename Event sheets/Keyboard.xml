@@ -3,7 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Keyboard</name>
     <events>
-        <comment bookmark="1">TODO: Create keyboard events and link them to the proper functions</comment>
-        <comment bookmark="1">TODO: mappable keys?</comment>
+        <comment>TODO: Create keyboard events and link them to the proper functions</comment>
+        <comment>TODO: mappable keys?</comment>
     </events>
 </c2eventsheet>

@@ -3,8 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Boot</name>
     <events>
-        <comment bookmark="1">SET LOADER LAYOUT TO TRUE!</comment>
-        <comment bookmark="1">TODO: A custom loading bar</comment>
+        <comment>SET LOADER LAYOUT TO TRUE!</comment>
+        <comment>TODO: A custom loading bar</comment>
         <variable comment="Whether the game has initially loaded " constant="0" name="loaded" sid="515909961809747" static="0" type="number">0</variable>
         <comment>On start set the max of the progress bar</comment>
         <event-block sid="611562148029417">

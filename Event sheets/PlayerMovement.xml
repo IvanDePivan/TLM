@@ -7,7 +7,7 @@
         <variable constant="0" name="playerAcceleration" sid="6510200713045481" static="0" type="number">2000</variable>
         <variable constant="0" name="playerDeceleration" sid="2108925880639714" static="0" type="number">2000</variable>
         <comment>So the point here is to do the actual moving of the player. Every tick the speed, the old position, the new position, the acceleration; all must be calculated.</comment>
-        <comment bookmark="1">TODO: Collision!</comment>
+        <comment>TODO: Collision!</comment>
         <event-block sid="2044939183207458">
             <conditions>
                 <condition id="0" name="On function" sid="2837322492977791" type="f">
