@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Test</name>
+    <events>
+        <include>Boot</include>
+        <include>playerMovement</include>
+        <comment>This is the main event sheet for the test layout</comment>
+        <event-block sid="7760593286010511">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="1570128469260097" type="System" />
+            </conditions>
+            <actions />
+        </event-block>
+    </events>
+</c2eventsheet>

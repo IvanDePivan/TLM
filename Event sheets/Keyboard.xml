@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<c2eventsheet>
-    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>Keyboard</name>
-    <events>
-        <comment>TODO: Create keyboard events and link them to the proper functions</comment>
-        <comment>TODO: mappable keys?</comment>
-    </events>
-</c2eventsheet>
